@@ -1,0 +1,6 @@
+<%= link_to "edit", edit_page_path(@page.id), :class=>"btn btn-mini" %>
+<%= link_to "pages", pages_path, :class=>"btn btn-mini" %>
+<h1><%=  @title %></h1>
+<div class="page_body">
+<%= @content.html_safe %>
+</div>

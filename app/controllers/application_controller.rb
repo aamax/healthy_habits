@@ -5,4 +5,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, :alert => exception.message
   end
 
+  def admin_user?
+    !current_user.nil? && (current_user.has_role? :admin)
+  end
+
 end

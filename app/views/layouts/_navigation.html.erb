@@ -1,26 +1,32 @@
-<%= link_to "Healthy Habits", root_path, :class => 'brand' %>
-<ul class="nav">
+
+<ul class="nav top_menu">
+  <li><%= link_to "Home", root_path, :class => 'brand' %></li>
+  <li><%= link_to "Is This You?", "/pages/is_this_you" %></li>
+  <li><%= link_to "Work With Me", "#" %></li>
+  <li><%= link_to "What Makes Me Different?", "/pages/different" %></li>
+  <li><%= link_to "Products/Services", "#" %></li>
+  <li><%= link_to "Meet Cathy", "/pages/meet_cathy" %></li>
+  <li><%= link_to "Blog", "#" %></li>
+  <li><%= link_to "Contact", "/pages/contact" %></li>
+</ul>
+
+<ul class="nav pull-right">
   <% if user_signed_in? %>
-    <li>
-    <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
-    </li>
+      <% if current_user.has_role? :admin %>
+          <li class="dropdown">
+            <%= link_to "Admin", "#", :class => "dropdown-toggle", :data => {:toggle => "dropdown"}, :id => :admin_menu %>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
+              <li><%= link_to "Users", users_path %></li>
+              <li><%= link_to "Pages", pages_path %></li>
+            </ul>
+          </li>
+      <% end %>
   <% else %>
-    <li>
-    <%= link_to 'Login', new_user_session_path %>
-    </li>
-  <% end %>
-  <% if user_signed_in? %>
-    <li>
-    <%= link_to 'Edit account', edit_user_registration_path %>
-    </li>
-    <% if current_user.has_role? :admin %>
       <li>
-      <%= link_to 'Admin', users_path %>
+        <%= link_to 'Login', new_user_session_path %>
       </li>
-    <% end %>
-  <% else %>
-    <li>
-    <%= link_to 'Sign up', new_user_registration_path %>
-    </li>
   <% end %>
 </ul>
+
+

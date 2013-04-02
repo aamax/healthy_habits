@@ -15,13 +15,13 @@ YAML.load(ENV['ROLES']).each do |role|
   puts 'role: ' << role
 end
 puts 'DEFAULT USERS'
-user = User.create! :name => "aamax@xmission.com", :email => ENV['ADMIN_EMAIL'].dup,
+user = User.create! :name => "Allen Maxwell", :email => "aamax@xmission.com",
                                     :password => ENV['ADMIN_PASSWORD'].dup,
                                     :password_confirmation => ENV['ADMIN_PASSWORD'].dup
 puts "User: #{user.name} [#{user.id}]"
 user.add_role :admin
 
-user = User.create! :name => ENV['CATHY_NAME'].dup, :email => ENV['CATHY_EMAIL'].dup,
+user = User.create! :name => "Cathy Maxwell", :email => ENV['CATHY_EMAIL'].dup,
                                     :password => ENV['CATHY_PASSWORD'].dup,
                                     :password_confirmation => ENV['CATHY_PASSWORD'].dup
 puts "User: #{user.name} [#{user.id}]"

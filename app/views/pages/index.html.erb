@@ -1,0 +1,8 @@
+<h1>Page Manager</h1>
+<%= link_to "Create New Page", new_page_path, :class=>"btn btn-mini" %>
+<ul>
+  <% @pages.each do |pg| %>
+      <li><%= link_to pg.name, "/pages/#{pg.name}" %> &nbsp; <%= pg.title %> &nbsp; <%= pg.content[0..25] %></li>
+
+  <% end %>
+</ul>
