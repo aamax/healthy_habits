@@ -7,12 +7,23 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # Environment variables (ENV['...']) are set in the file config/application.yml.
 # See http://railsapps.github.com/rails-environment-variables.html
+ActiveRecord::Base.connection.execute("TRUNCATE TABLE users RESTART IDENTITY;")
+
 puts 'ROLES'
 YAML.load(ENV['ROLES']).each do |role|
   Role.find_or_create_by_name({ :name => role }, :without_protection => true)
   puts 'role: ' << role
 end
 puts 'DEFAULT USERS'
-user = User.find_or_create_by_email :name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
-puts 'user: ' << user.name
+user = User.create! :name => "aamax@xmission.com", :email => ENV['ADMIN_EMAIL'].dup,
+                                    :password => ENV['ADMIN_PASSWORD'].dup,
+                                    :password_confirmation => ENV['ADMIN_PASSWORD'].dup
+puts "User: #{user.name} [#{user.id}]"
+user.add_role :admin
+
+user = User.create! :name => ENV['CATHY_NAME'].dup, :email => ENV['CATHY_EMAIL'].dup,
+                                    :password => ENV['CATHY_PASSWORD'].dup,
+                                    :password_confirmation => ENV['CATHY_PASSWORD'].dup
+puts "User: #{user.name} [#{user.id}]"
+
 user.add_role :admin
