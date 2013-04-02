@@ -1,4 +1,7 @@
 HealthyHabits::Application.routes.draw do
+  resources :pages
+
+
   authenticated :user do
     root :to => 'home#index'
   end
