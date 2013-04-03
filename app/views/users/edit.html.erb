@@ -1,0 +1,7 @@
+<h1>Edit User</h1>
+
+<% if current_user.has_role? :admin %>
+    <%= render "form", :user => @user %>
+<% else %>
+    Only Administrators Can Create A New User...
+<% end %>
