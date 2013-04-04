@@ -1,8 +1,15 @@
 <h1>Page Manager</h1>
-<%= link_to "Create New Page", new_page_path, :class=>"btn btn-mini" %>
+<%= hidden_field_tag( "page_name", "admin", :id => "page_name") %>
+<% if !current_user.nil? && current_user.has_role?(:admin) %>
+    <%= link_to "Create New Page", new_page_path, :class=>"btn btn-mini" %>
+<% end %>
 <ul>
   <% @pages.each do |pg| %>
-      <li><%= link_to pg.name, "/pages/#{pg.name}" %> &nbsp; <%= pg.title %> &nbsp; <%= pg.content[0..25] %></li>
-
+      <li><%= link_to pg.name, "/pages/#{pg.name}" %> &nbsp; <%= pg.title %> &nbsp; <%= pg.content[0..25] %> &nbsp;
+        <%= link_to "delete", pg, :method => :delete,
+                  :confirm => "You sure you want to delete " + pg.name + "?",
+                  :title => "Delete #{pg.name}",
+                  :class => "button" %>
+      </li>
   <% end %>
 </ul>

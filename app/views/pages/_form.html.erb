@@ -39,5 +39,6 @@
 
     <%= f.text_area :content, :class => "tinymce", :rows => 20, :cols => 120 %>
 
-    <%= f.button :submit %>
+    <%= f.button :submit, :class=>"btn btn-mini btn-success" %>
+    <%= link_to 'Cancel', pages_url, :class=>"btn btn-mini" %>
 <% end %>

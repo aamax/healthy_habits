@@ -77,4 +77,14 @@ class PagesController < ApplicationController
       redirect_to root_path, :alert => "You are not authorized to view this page"
     end
   end
+
+  def destroy
+    @page = Page.find(params[:id])
+    if @page.destroy
+      redirect_to pages_path, :notice=> "This Page was destroyed."
+    else
+      redirect_to pages_path, :alert=> "Error deleting page: " + @page.name
+    end
+
+  end
 end

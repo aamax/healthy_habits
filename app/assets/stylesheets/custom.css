@@ -1,6 +1,6 @@
-.top_menu {
-    background-color: #f9e743 !important;
-}
+/*.top_menu {*/
+    /*background-color: #f9e743 !important;*/
+/*}*/
 
 #error_explanation {
     background-color: pink;
@@ -8,6 +8,15 @@
 
 .user_nav_name {
     padding-top: 10px;
+}
+
+li.active {
+    font-weight: bold;
+}
+
+.center_input {
+    margin-right:10px !important;
+    margin-left: 10px !important;
 }
 
 .bottom_menu {
@@ -31,9 +40,7 @@ a.footer_text {
     background-color: #460e61;
 }
 
-.navbar-inner {
-    text-align:center;
-}
+
 
 .side_border {
     border-right: 1px solid;
@@ -57,11 +64,10 @@ a.footer_text {
     background-color: #460e61 ;
     color: white;
     font-weight: bold;
+    text-align: center;
 }
 
-.navbar-inner {
-    border-bottom: 0px none !important;
-}
+
 
 .content {
     background-color: white;

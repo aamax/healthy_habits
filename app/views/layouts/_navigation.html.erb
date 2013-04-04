@@ -1,33 +1,69 @@
-<ul class="nav top_menu">
-  <li><%= link_to "Home", root_path, :class => 'brand' %></li>
-  <li><%= link_to "Is This You?", "/pages/is_this_you" %></li>
-  <li><%= link_to "Work With Me", "#" %></li>
-  <li><%= link_to "What Makes Me Different?", "/pages/different" %></li>
-  <li><%= link_to "Products/Services", "#" %></li>
-  <li><%= link_to "Meet Cathy", "/pages/meet_cathy" %></li>
-  <li><%= link_to "Blog", "#" %></li>
-  <li><%= link_to "Contact", "/pages/contact" %></li>
-</ul>
-
-<ul class="nav pull-right">
-  <% if user_signed_in? %>
-      <li class="user_nav_name"><%= current_user.name %></li>
-      <% #if current_user.has_role? :admin
-      if true%>
-          <li class="dropdown">
-            <%= link_to "Admin", "#", :class => "dropdown-toggle", :data => {:toggle => "dropdown"}, :id => :admin_menu %>
-            <ul class="dropdown-menu">
-              <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
-              <li><%= link_to "Users", users_path %></li>
-              <li><%= link_to "Pages", pages_path %></li>
-            </ul>
-          </li>
+<div class="navbar">
+  <div class="navbar-inner ">
+    <ul class="nav">
+      <li class="span1"></li>
+      <li><%= link_to "Home", root_path, :class => 'brand', :id => "home_menu" %></li>
+      <li><%= link_to "Is This You?", "/pages/is_this_you", :id => "is_this_you_menu" %></li>
+      <% if true == false %>
+          <li><%= link_to "Work With Me", "#" %></li>
       <% end %>
-  <% else %>
-      <li>
-        <%= link_to 'Login', new_user_session_path %>
-      </li>
-  <% end %>
-</ul>
+      <li><%= link_to "What Makes Me Different?", "/pages/different", :id => "different_menu" %></li>
+      <li><%= link_to "Products/Services", "#", :id => "products_menu" %></li>
+      <li><%= link_to "Meet Cathy", "/pages/meet_cathy", :id => "meet_cathy_menu" %></li>
+      <% if true == false %>
+          <li><%= link_to "Blog", "#", :id => "blog_menu" %></li>
+      <% end %>
+      <li><%= link_to "Contact", "/pages/contact", :id => "contact_menu" %></li>
+    </ul>
 
+    <ul class="nav pull-right">
+      <% if user_signed_in? %>
+          <li class="user_nav_name"><%= current_user.name %></li>
+          <% #if current_user.has_role? :admin
+             if true %>
+              <li class="dropdown">
+                <%= link_to "Admin", "#", :class => "dropdown-toggle", :data => {:toggle => "dropdown"}, :id => :admin_menu %>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Users", users_path %></li>
+                  <li><%= link_to "Pages", pages_path %></li>
+                  <li>
+                    <hr/>
+                  </li>
+                  <li><%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %></li>
+                </ul>
+              </li>
+          <% end %>
+      <% else %>
+          <% if current_user.nil? %>
+              <% unless params[:controller]=="devise/sessions" %>
+                  <li class="dropdown">
+                    <%= link_to "Sign In", "#", :class => "dropdown-toggle", :data => {:toggle => "dropdown"}, :id => :login_menu %>
+                    <ul class="dropdown-menu">
+                      <%= form_tag new_user_session_path, :class => 'form-inline navbar-form pull-right' do %>
+                          <li>
+                            <div class="center_input"><input type="text" placeholder="Email" name='user[email]'></div>
+
+                          </li>
+                          <li>
+                            <div class="center_input">
+                              <input type="password" placeholder="Password" name='user[password]'></div>
+                          </li>
+
+                          <li>
+                            <div class="center_input">
+                              <button type="submit" class="btn btn-mini btn-primary">Sign in</button>
+                            </div>
+                          </li>
+                          </ul>
+                          </li>
+
+
+                      <% end %>
+              <% end %>
+          <% end %>
+
+      <% end %>
+    </ul>
+  </div>
+</div>
 

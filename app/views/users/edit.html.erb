@@ -1,5 +1,5 @@
 <h1>Edit User</h1>
-
+<%= hidden_field_tag( "page_name", "admin", :id => "page_name") %>
 <% if current_user.has_role? :admin %>
     <%= render "form", :user => @user %>
 <% else %>

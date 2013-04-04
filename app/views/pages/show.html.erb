@@ -1,6 +1,10 @@
-<%= link_to "edit", edit_page_path(@page.id), :class=>"btn btn-mini" %>
-<%= link_to "pages", pages_path, :class=>"btn btn-mini" %>
+<% if !current_user.nil? && current_user.has_role?(:admin) %>
+    <%= link_to "edit", edit_page_path(@page.id), :class=>"btn btn-mini" %>
+    <%= link_to "pages", pages_path, :class=>"btn btn-mini" %>
+<% end %>
 <h1><%=  @title %></h1>
+
+<%= hidden_field_tag( "page_name", @page.name, :id => "page_name") %>
 <div class="page_body">
 <%= @content.html_safe %>
 </div>
