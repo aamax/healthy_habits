@@ -1,4 +1,7 @@
 HealthyHabits::Application.routes.draw do
+  resources :testimonials
+
+
   resources :pages
 
 

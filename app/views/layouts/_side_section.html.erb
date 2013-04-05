@@ -1,10 +1,52 @@
-connect with cathy - facebook, twitter, email, blog<p>
+<div class="signup_section">
+  <h3>Sign Up!</h3>
 
-sign up for newsletter section<br/>
-<p>
+  <div class='signup_box'>
+    <div class='signup_boxtop'>
+      <div></div>
+    </div>
+    <div class='signup_boxcontent'>
+      Name:<br/>
+      Email:<br/>
+      eZine: <br/>
+      Events and Specials: <br/>
+      free gift: <br/>
+      <br/>
+      <button class='btn btn-mini'>Enter</button>
+    </div>
+    <div class='signup_boxbottom'>
+      <div></div>
+    </div>
+  </div>
 
-testimonial section<br/>
-<p>
+</div>
 
-</p>
+<br/><br/>
+<div class="testimonial_section">
+  <h3>Testimonials</h3>
+
+  <div class='testimony_box'>
+    <div class='testimony_boxtop'>
+      <div></div>
+    </div>
+    <div class='testimony_boxcontent'>
+      <ul>
+        <% arr = Testimonial.all
+           testimonial = arr[rand(arr.length)]
+        %>
+        <li class="testimonial_section">
+          <%= testimonial.comment %> <br/>
+          <span class="testimonial_name">- <%= testimonial.name %><br/>&nbsp;&nbsp;<%= testimonial.date %> </span>
+          <br/><br/>
+          <br/>
+        </li>
+      </ul>
+    </div>
+    <div class='testimony_boxbottom'>
+      <div></div>
+    </div>
+  </div>
+
+
+</div>
 
