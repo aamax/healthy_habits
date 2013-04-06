@@ -1,3 +1,90 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#error_explanation {
+  background-color: pink;
+}
+
+.user_nav_name {
+  padding-top: 10px;
+}
+
+li.active {
+  font-weight: bold;
+}
+
+.center_input {
+  margin-right:10px !important;
+  margin-left: 10px !important;
+}
+
+.bottom_menu {
+  padding-top: 15px;
+  background-color: #c70082 !important;
+}
+
+.footer_invisible {
+  color: #c70082 !important;
+}
+
+.footer_text, a.footer_text {
+  color: white !important;
+}
+
+.body_general {
+  background-color: #460e61;
+}
+
+
+
+
+
+/**/
+
+.content_box {
+  cols: 80;
+}
+
+.page_body {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.main_page_body {
+  position:relative;
+  height: 100%;
+  color: #5d5d5d;
+}
+
+.side_section {
+  position:absolute;
+  top:0;
+  right:0;
+  color: white;
+}
+
+.main_section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.top_banner {
+  background-color: #460e61 ;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+
+.content {
+  margin-top: 50px;
+  margin-bottom: 500px !important;
+  background-color: transparent !important;
+}
+

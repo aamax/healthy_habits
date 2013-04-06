@@ -6,19 +6,20 @@
       <div></div>
     </div>
     <div class='signup_boxcontent'>
-      Name:<br/>
-      Email:<br/>
-      eZine: <br/>
-      Events and Specials: <br/>
-      free gift: <br/>
-      <br/>
-      <button class='btn btn-mini'>Enter</button>
+      Enter your name and email in the fields below to recieve a free recipe eBook with healthy and tasty
+      nutritional choices for you and your family!  We will also subscribe you to our free eZine and help
+      you start on the road to "Healthy Habits"!    <hr/>
+      <%= form_tag :controller=>"contacts", :action=>"create", :method=>"POST" do %>
+          <%= text_field(:contact, :name, :placeholder=>"Enter Name", :class=>"contact_field") %>
+          <%= text_field(:contact, :email, :placeholder=>"Enter Email", :class=>"contact_field") %>
+          <%= submit_tag :submit, :class=>"btn" %>
+          <%= image_tag "book.jpg" %>
+      <% end %>
     </div>
     <div class='signup_boxbottom'>
       <div></div>
     </div>
   </div>
-
 </div>
 
 <br/><br/>
@@ -33,13 +34,15 @@
       <ul>
         <% arr = Testimonial.all
            testimonial = arr[rand(arr.length)]
+           unless testimonial.nil?
         %>
-        <li class="testimonial_section">
-          <%= testimonial.comment %> <br/>
-          <span class="testimonial_name">- <%= testimonial.name %><br/>&nbsp;&nbsp;<%= testimonial.date %> </span>
-          <br/><br/>
-          <br/>
-        </li>
+            <li class="testimonial_section">
+              <%= testimonial.comment %> <br/>
+              <span class="testimonial_name">- <%= testimonial.name %><br/>&nbsp;&nbsp;<%= testimonial.date %> </span>
+              <br/><br/>
+              <br/>
+            </li>
+        <% end %>
       </ul>
     </div>
     <div class='testimony_boxbottom'>

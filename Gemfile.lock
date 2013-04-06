@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/engageis/activerecord-postgres-hstore.git
+  revision: 259458c070ee35b856e142bef208d0074c8af47a
+  specs:
+    activerecord-postgres-hstore (0.7.6)
+      activerecord (>= 3.1)
+      pg-hstore (>= 1.1.5)
+      rake
+
+GIT
   remote: git://github.com/spohlenz/tinymce-rails.git
   revision: 1f2bccd7b2cf5347033252db60b034b0508c5893
   specs:
@@ -112,6 +121,7 @@ GEM
     nokogiri (1.5.9)
     orm_adapter (0.4.0)
     pg (0.15.0)
+    pg-hstore (1.1.7)
     polyglot (0.3.3)
     pry (0.9.12)
       coderay (~> 1.0.5)
@@ -208,6 +218,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-postgres-hstore!
   better_errors (>= 0.7.2)
   cancan (>= 1.6.9)
   capybara (>= 2.0.3)

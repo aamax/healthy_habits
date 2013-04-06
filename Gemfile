@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 gem 'rails', '3.2.12'
 gem 'pg'
+gem 'activerecord-postgres-hstore', github: 'engageis/activerecord-postgres-hstore'
+
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
