@@ -5,26 +5,15 @@
 .testimony_box {
   background: #d3d3d3;
   border-radius: 15px;
+  margin-left:5px;
+  width: 300px;
 }
-.testimony_boxtop {
-  /*background: url(ne.gif) no-repeat top right;*/
-}
-.testimony_boxtop div {
-  font-size: 0;
-  height: 10px;
-  /*background: url(nw.gif) no-repeat top left;*/
-}
-.testimony_boxbottom {
-  /*background: url(se.gif) no-repeat bottom right;*/
-}
-.testimony_boxbottom div {
-  font-size: 0;
-  height: 10px;
-  /*background: url(sw.gif) no-repeat bottom left;*/
-}
+
+
 .testimony_boxcontent {
   padding: 0px 10px 0px 10px;
   color: #000000;
+  margin-right: 10px;
 }
 
 .testimonial_name {
@@ -35,10 +24,6 @@
 
 .testimonial_section {
   font-family: 'comic sans ms' !important;
-}
-
-div.testimonial_section h3 {
-  text-align: center !important;
 }
 
 

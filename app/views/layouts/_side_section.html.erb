@@ -1,28 +1,4 @@
-<div class="signup_section">
-  <h3>Sign Up!</h3>
 
-  <div class='signup_box'>
-    <div class='signup_boxtop'>
-      <div></div>
-    </div>
-    <div class='signup_boxcontent'>
-      Enter your name and email in the fields below to recieve a free recipe eBook with healthy and tasty
-      nutritional choices for you and your family!  We will also subscribe you to our free eZine and help
-      you start on the road to "Healthy Habits"!    <hr/>
-      <%= form_tag :controller=>"contacts", :action=>"create", :method=>"POST" do %>
-          <%= text_field(:contact, :name, :placeholder=>"Enter Name", :class=>"contact_field") %>
-          <%= text_field(:contact, :email, :placeholder=>"Enter Email", :class=>"contact_field") %>
-          <%= submit_tag :submit, :class=>"btn" %>
-          <%= image_tag "book.jpg" %>
-      <% end %>
-    </div>
-    <div class='signup_boxbottom'>
-      <div></div>
-    </div>
-  </div>
-</div>
-
-<br/><br/>
 <div class="testimonial_section">
   <h3>Testimonials</h3>
 

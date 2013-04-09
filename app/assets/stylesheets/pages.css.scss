@@ -19,21 +19,19 @@ li.active {
   margin-left: 10px !important;
 }
 
-.bottom_menu {
-  padding-top: 15px;
-  background-color: #c70082 !important;
-}
+//.bottom_menu {
+//  padding-top: 15px;
+//  background-color: #c70082 !important;
+//}
 
 .footer_invisible {
   color: #c70082 !important;
 }
 
-.footer_text, a.footer_text {
-  color: white !important;
-}
+
 
 .body_general {
-  background-color: #460e61;
+  background-color: #3641c4;
 }
 
 
@@ -58,33 +56,26 @@ li.active {
 }
 
 .side_section {
-  position:absolute;
-  top:0;
-  right:0;
+  position:relative;
+  top: -70px;
+  left: 0px;
   color: white;
 }
 
 .main_section {
-  position: absolute;
-  top: 0;
+  position: relative;
+  top: -50px;
   left: 0;
   background-color: white;
   border-radius: 15px;
-  padding: 10px;
+  padding-left: 10px;
+  width: 750px;
 }
-
-.top_banner {
-  background-color: #460e61 ;
-  color: white;
-  font-weight: bold;
-  text-align: center;
-}
-
 
 
 .content {
-  margin-top: 50px;
-  margin-bottom: 500px !important;
+  //margin-top: 50px;
+  //margin-bottom: 500px !important;
   background-color: transparent !important;
 }
 

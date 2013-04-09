@@ -10,13 +10,12 @@
     <%= yield(:head) %>
   </head>
   <body class="<%= controller_name %> <%= action_name %> body_general">
-        <div class="container-fluid">
-          <%= render 'layouts/navigation' %>
-        </div>
+        <%= render 'layouts/navigation' %>
+
         <%= render "layouts/top_banner" %>
 
     <div id="main" role="main">
-      <div class="container-fluid">
+
 
           <div class="row">
             <div class="span12">
@@ -36,15 +35,9 @@
             </div>
           </div>
 
-      </div> <!--! end of .container -->
+
     </div> <!--! end of #main -->
     <br/> <br/> <br/> <br/> <br/>
-    <div class="navbar navbar-fixed-bottom">
-      <nav class="navbar-inner">
-        <div class="container-fluid bottom_menu">
-          <%= render 'layouts/footer' %>
-        </div>
-      </nav>
-    </div>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

@@ -1,3 +1,19 @@
-<div class="top_banner_section">
-  <%= image_tag "dragon_fly_logo.jpg", :class=>"my_banner_logo" %>
+<%= image_tag "banner_logo.gif", :class => "my_banner_logo" %>
+
+<%= image_tag "cathy_banner.gif", :class => "my_banner_image" %>
+
+<div class='signup_box'>
+  <div class='signup_boxcontent'>
+    <%= image_tag "book.jpg", :class => "signup_image" %>
+    Enter your name and email in the fields below to recieve a free recipe eBook with healthy and tasty
+    nutritional choices for you and your family! We will also subscribe you to our free eZine and help
+    you start on the road to "Healthy Habits"!
+
+    <br/><br/>
+    <%= form_tag :controller => "contacts", :action => "create", :method => "POST" do %>
+        <%= text_field(:contact, :name, :placeholder => "Enter Name", :class => "contact_field") %>
+        <%= text_field(:contact, :email, :placeholder => "Enter Email", :class => "contact_field") %>
+        <%= submit_tag :submit, :class => "btn btn-mini" %>
+    <% end %>
+  </div>
 </div>
