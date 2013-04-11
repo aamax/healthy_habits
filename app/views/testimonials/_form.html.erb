@@ -7,6 +7,12 @@
     <%= f.input :date %>
   </div>
 
+    <%= f.file_field :thumbnail, :class=>"file_upload_btn" %>
+
+    <% unless @testimonial.thumbnail.blank? %>
+        <%= image_tag @testimonial.thumbnail.url(:thumb), :id=>"testimonial_image" %>
+    <% end %>
+
   <div class="form-actions">
     <%= f.button :submit %>
   </div>

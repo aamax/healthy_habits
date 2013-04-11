@@ -36,6 +36,7 @@ end
 group :development do
   gem "quiet_assets", ">= 1.0.2"
   gem "better_errors", ">= 0.7.2"
+  gem "annotate"
 end
 
 #gem "bootstrap-sass", ">= 2.3.0.0"
@@ -45,3 +46,5 @@ gem "rolify", ">= 3.2.0"
 gem "simple_form", ">= 2.1.0"
 gem "figaro", ">= 0.6.3"
 gem 'tinymce-rails', :git => 'git://github.com/spohlenz/tinymce-rails.git'
+gem "paperclip", "~> 3.0"
+gem 'aws-sdk'
