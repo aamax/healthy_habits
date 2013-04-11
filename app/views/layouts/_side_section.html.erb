@@ -13,6 +13,7 @@
            unless testimonial.nil?
         %>
             <li class="testimonial_section">
+              <%= image_tag testimonial.thumbnail.url(:thumb), :class=>"testimonial_image" %>
               <%= testimonial.comment %> <br/>
               <span class="testimonial_name">- <%= testimonial.name %><br/>&nbsp;&nbsp;<%= testimonial.date %> </span>
               <br/><br/>

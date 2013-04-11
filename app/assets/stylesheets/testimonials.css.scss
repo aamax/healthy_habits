@@ -18,12 +18,17 @@
 
 .testimonial_name {
   font-weight: bold !important;
-  float: right !important;
+  //float: right !important;
   font-family: 'comic sans ms' !important;
 }
 
 .testimonial_section {
   font-family: 'comic sans ms' !important;
+  padding-top: 10px;
+}
+
+.testimonial_image {
+  float: right !important;
 }
 
 

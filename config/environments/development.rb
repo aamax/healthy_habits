@@ -31,6 +31,15 @@ HealthyHabits::Application.configure do
     password: ENV["GMAIL_PASSWORD"]
   }
 
+  config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_host_name => "s3-us-west-2.amazonaws.com",
+      :s3_credentials => {
+          :bucket => 'healthyhabitsutah',
+          :access_key_id => ENV['AWS_KEY'],
+          :secret_access_key => ENV['AWS_SECRET']
+      }
+  }
 
 
   # Print deprecation notices to the Rails logger

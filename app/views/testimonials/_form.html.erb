@@ -2,16 +2,17 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :comment %>
-    <%= f.input :date %>
-  </div>
-
     <%= f.file_field :thumbnail, :class=>"file_upload_btn" %>
 
     <% unless @testimonial.thumbnail.blank? %>
         <%= image_tag @testimonial.thumbnail.url(:thumb), :id=>"testimonial_image" %>
     <% end %>
+
+    <%= f.input :name %>
+    <%= f.input :comment, :input_html => {:style=> 'width: 500px; height: 200px;'} %>
+    <%= f.input :date %>
+  </div>
+
 
   <div class="form-actions">
     <%= f.button :submit %>

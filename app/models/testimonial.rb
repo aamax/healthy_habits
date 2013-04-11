@@ -17,5 +17,10 @@
 class Testimonial < ActiveRecord::Base
   attr_accessible :comment, :date, :name, :thumbnail
 
-  has_attached_file :thumbnail, :styles => {:thumb => "100x100>" }
+  has_attached_file :thumbnail,
+    :styles => {
+        thumb: '100x100>',
+        full: '300x300>'
+    }
+
 end
