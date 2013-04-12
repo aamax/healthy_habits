@@ -1,28 +1,52 @@
-<h1>Listing testimonials</h1>
+<% if !current_user.nil? && current_user.admin?  %>
+<h1>Testimonial Management</h1>
 
-<%= link_to 'New Testimonial', new_testimonial_path, :class=>"btn btn-mini btn-success" %>
+<%= link_to 'New Testimonial', new_testimonial_path, :class=>"btn btn-small btn-success btn_test" %>
 <br /><br/>
 
-<table class="table table-striped">
+<table class="table table-striped testimonial_table">
   <tr>
-    <th>Name</th>
+    <th>Name/Date</th>
     <th>Comment</th>
-    <th>Date</th>
     <th></th>
-    <th></th>
-    <th></th>
+
+    <th colspan="2">Operations</th>
+
   </tr>
 
 <% @testimonials.each do |testimonial| %>
   <tr>
-    <td><%= testimonial.name %></td>
-    <td><%= testimonial.comment %></td>
-    <td><%= testimonial.date %></td>
-    <td><%= link_to 'Show', testimonial %></td>
-    <td><%= link_to 'Edit', edit_testimonial_path(testimonial) %></td>
-    <td><%= link_to 'Destroy', testimonial, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td>
+      <strong> <%= testimonial.name %><br/></strong>
+
+      <% unless testimonial.thumbnail.blank? %>
+          <%= image_tag testimonial.thumbnail.url(:thumb) %> <br/>
+      <% end %>
+      <%= testimonial.date %>
+    </td>
+    <td class="span5"><%= testimonial.comment.html_safe %></td>
+    <td></td>
+    <td><%= link_to 'Edit', edit_testimonial_path(testimonial), :class=>"btn btn-small btn-primary btn_test" %></td>
+    <td><%= link_to 'Destroy', testimonial, method: :delete,
+                    data: { confirm: 'Are you sure?' }, :class=>"btn btn-small btn-danger btn_test" %></td>
   </tr>
 <% end %>
 </table>
+<% else %>
+    <h1>Public Testimonials Page</h1>
+    <p>The following are real testimonials from our past clients.  We look forward to adding your story to this page!</p>
+    <table class="table table-striped">
+      <% @testimonials.each do |testimonial| %>
+          <tr>
+            <td>
+              <strong><%= testimonial.name %></strong> - <%= testimonial.date %> <br/><br/>
+              <%= image_tag testimonial.thumbnail.url(:thumb), :class=>"testimonial_image" %>
+              <%= testimonial.comment.html_safe %>
+
+            </td>
+          </tr>
+      <% end %>
+    </table>
+<% end %>
 
 

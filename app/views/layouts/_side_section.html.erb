@@ -1,4 +1,5 @@
 
+<% if request.env["PATH_INFO"] != "/testimonials" %>
 <div class="testimonial_section">
   <h3>Testimonials</h3>
 
@@ -14,9 +15,11 @@
         %>
             <li class="testimonial_section">
               <%= image_tag testimonial.thumbnail.url(:thumb), :class=>"testimonial_image" %>
-              <%= testimonial.comment %> <br/>
+              <%= testimonial.comment.html_safe %> <br/>
               <span class="testimonial_name">- <%= testimonial.name %><br/>&nbsp;&nbsp;<%= testimonial.date %> </span>
-              <br/><br/>
+              <br/>   <br/>
+              <%= link_to "Read More Testimonials >>", testimonials_path, :class=>"btn btn-mini" %>
+              <br/>
               <br/>
             </li>
         <% end %>
@@ -30,3 +33,6 @@
 
 </div>
 
+<% else %>
+      Non - testimonial side section content as defined later...
+<% end %>

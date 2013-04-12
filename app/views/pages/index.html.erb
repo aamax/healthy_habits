@@ -1,15 +1,18 @@
 <h1>Page Manager</h1>
 <%= hidden_field_tag( "page_name", "admin", :id => "page_name") %>
 <% if !current_user.nil? && current_user.has_role?(:admin) %>
-    <%= link_to "Create New Page", new_page_path, :class=>"btn btn-mini" %>
+    <%= link_to "Create New Page", new_page_path, :class=>"btn btn-mini btn-success btn_test" %> <br/>
 <% end %>
-<ul>
+<table class="table table-striped">
   <% @pages.each do |pg| %>
-      <li><%= link_to pg.name, "/pages/#{pg.name}" %> &nbsp; <%= pg.title %> &nbsp; <%= pg.content[0..25] %> &nbsp;
-        <%= link_to "delete", pg, :method => :delete,
-                  :confirm => "You sure you want to delete " + pg.name + "?",
-                  :title => "Delete #{pg.name}",
-                  :class => "button" %>
-      </li>
+      <tr>
+        <td><%= link_to pg.name, "/pages/#{pg.name}" %></td>
+        <td><%= pg.title %></td>
+        <td><%= link_to " edit ", edit_page_path(pg), :class=>"btn btn-mini btn-primary btn_test span1" %></td>
+        <td><%= link_to "delete", pg, :method => :delete,
+                        :confirm => "You sure you want to delete " + pg.name + "?",
+                        :title => "Delete #{pg.name}",
+                        :class => "btn btn-danger btn-mini btn_test span1" %></td>
+      </tr>
   <% end %>
-</ul>
+</table>

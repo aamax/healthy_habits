@@ -1,35 +1,40 @@
 <h3>Users</h3>
 <%= hidden_field_tag( "page_name", "admin", :id => "page_name") %>
 
-<%= link_to "Add User", new_user_path, :class=>"btn btn-mini" %>
+<%= link_to "Add User", new_user_path, :class=>"btn btn-mini btn-success" %>
 <br/>
 <div class="span8">
-<table class="table table-condensed">
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Username</th>
-      <th>Email</th>
-      <th>Registered</th>
-      <th>Role</th>
-      <th></th>
-      <th></th>
+      <th style="text-align: center;">User</th>
+      <th colspan="3" style="text-align: center;">Operations</th>
     </tr>
   </thead>
   <tbody>
   <% @users.each do |user| %>
     <tr>
-      <td><%= link_to user.name, user %></td>
-      <td><%= user.email %></td>
-      <td><%= user.created_at.to_date %></td>
-      <td><%= user.roles.first.name.titleize unless user.roles.first.nil? %></td>
-      <td>
-        <a data-toggle="modal" href="#role-options-<%= user.id %>" class="btn btn-mini" type="button">Change role</a>
-        <%= render user %>
+      <td class="span4">
+        <strong><%= link_to user.name, user %></strong> <br/>
+        <%= user.email  %>
       </td>
       <td>
-        <%= link_to "Edit", edit_user_path(user), :class=>"btn btn-mini" %>
+        <% unless user.roles.first.nil? %>
+            <a data-toggle="modal" href="#role-options-<%= user.id %>" class="btn btn-mini btn-info btn_test span1" type="button">
+              <%= user.roles.first.name.titleize %>
+            </a>
+            <%= render user %>
+        <% end %>
       </td>
-      <td><%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini btn-warning') unless user == current_user %></td>
+
+      <td>
+        <%= link_to "Edit", edit_user_path(user), :class=>"btn btn-mini btn-primary btn_test span1" %>
+      </td>
+
+      <td>
+        <%= link_to("Delete", user_path(user), :data => { :confirm => "Are you sure?" },
+                      :method => :delete, :class => 'btn btn-mini btn-danger btn_test span1') unless user == current_user %>
+      </td>
     </tr>
   <% end %>
   </tbody>

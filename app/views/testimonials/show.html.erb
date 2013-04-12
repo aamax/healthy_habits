@@ -9,7 +9,7 @@
   <%= image_tag @testimonial.thumbnail.url(:thumb) %><br/>
   <b>Comment:</b> <br/>
 
-  <%= @testimonial.comment %>
+  <%= @testimonial.comment.html_safe %>
 </p>
 
 <p>

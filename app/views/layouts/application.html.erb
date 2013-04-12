@@ -14,22 +14,15 @@
 
         <%= render "layouts/top_banner" %>
 
+        <%= render 'layouts/messages' %>
+
     <div id="main" role="main">
-
-
-          <div class="row">
-            <div class="span12">
-              <%= render 'layouts/messages' %>
-            </div>
-          </div>
-
           <div class="row main_page_body">
              <div class="span9 main_section">
 
                <%= yield %>
 
             </div>
-
             <div class="span3 side_section">
                 <%= render 'layouts/side_section' %>
             </div>

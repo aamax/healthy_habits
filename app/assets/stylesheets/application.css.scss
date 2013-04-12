@@ -27,9 +27,16 @@
 
 #main {
   position: relative;
-  top: -70px;
   margin-left: 10px;
+  top: -110px;
 }
+
+
+.body_general {
+  background-color: #3641c4;
+}
+
+
 
 .footer {
   position: fixed;
@@ -44,5 +51,16 @@
 
 .footer_text, a.footer_text {
   color: white !important;
+}
+
+.alert {
+  position: fixed;
+  top: 50px;
+  left: 75px;
+  width: 600px;
+}
+
+.navbar-fixed-top .navbar-inner, .navbar-fixed-bottom .navbar-inner {
+  padding: 0px !important;
 }
 

@@ -40,8 +40,6 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
-    binding.pry
-
     @contact = Contact.new(params[:contact])
     if (@contact.name == "name") && (@contact.email == "email")
       redirect_to :back, :notice=>"no entry added when name and email not enterred "
@@ -50,11 +48,11 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
-        format.json { render json: @contact, status: :created, location: @contact }
+        format.html { redirect_to root_path, notice: 'Contact was successfully created.' }
+        format.json { render json: root_path, status: :created, location: @contact }
       else
-        format.html { render action: "new" }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
+        format.html { render action: :back, :alert=>"Error saving contact info" }
+        format.json { render json: @contact.errors, status: "error saving contact info" }
       end
     end
   end
