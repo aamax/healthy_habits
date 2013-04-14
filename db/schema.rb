@@ -11,14 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130411003725) do
+ActiveRecord::Schema.define(:version => 20130413202644) do
 
   create_table "contacts", :force => true do |t|
     t.string   "name"
     t.string   "email"
     t.hstore   "meta_data"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.boolean  "notifications", :default => true
+    t.boolean  "ezine",         :default => true
+    t.string   "group",         :default => "WEB"
   end
 
   create_table "pages", :force => true do |t|

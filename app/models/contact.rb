@@ -12,4 +12,8 @@
 
 class Contact < ActiveRecord::Base
   attr_accessible :email, :name, :meta_data
+
+  # TODO don't allow duplicates
+  # TODO after create: send welcome email if group="WEB"
+  # TODO      else - prompt to send welcome email
 end
