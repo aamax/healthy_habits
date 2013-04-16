@@ -1,4 +1,8 @@
 class ContactsController < ApplicationController
+  require "json"
+
+  respond_to :json, :html
+
   # GET /contacts
   # GET /contacts.json
   def index
@@ -40,21 +44,24 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
-    @contact = Contact.new(params[:contact])
-    if (@contact.name == "name") && (@contact.email == "email")
-      redirect_to :back, :notice=>"no entry added when name and email not enterred "
-      return
-    end
+    respond_with Contact.create(params[:contact])
 
-    respond_to do |format|
-      if @contact.save
-        format.html { redirect_to root_path, notice: 'Contact was successfully created.' }
-        format.json { render json: root_path, status: :created, location: @contact }
-      else
-        format.html { render action: :back, :alert=>"Error saving contact info" }
-        format.json { render json: @contact.errors, status: "error saving contact info" }
-      end
-    end
+    #
+    #@contact = Contact.new(params[:contact])
+    #if (@contact.name == "name") && (@contact.email == "email")
+    #  redirect_to :back, :notice=>"no entry added when name and email not enterred "
+    #  return
+    #end
+    #
+    #respond_to do |format|
+    #  if @contact.save
+    #    format.html { redirect_to root_path, notice: 'Contact was successfully created.' }
+    #    format.json { render json: root_path, status: :created, location: @contact }
+    #  else
+    #    format.html { render action: :back, :alert=>"Error saving contact info" }
+    #    format.json { render json: @contact.errors, status: "error saving contact info" }
+    #  end
+    #end
   end
 
   # PUT /contacts/1

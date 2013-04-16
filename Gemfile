@@ -2,13 +2,14 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.12'
 gem 'pg'
 gem 'activerecord-postgres-hstore', github: 'engageis/activerecord-postgres-hstore'
-
+gem 'ng-rails-csrf', :git => "git://github.com/xrd/ng-rails-csrf.git" #helps rails csrf with angular
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem "twitter-bootstrap-rails", ">= 2.2.4"
+  gem 'angular-rails'
 end
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -48,3 +49,4 @@ gem "figaro", ">= 0.6.3"
 gem 'tinymce-rails', :git => 'git://github.com/spohlenz/tinymce-rails.git'
 gem "paperclip", "~> 3.0"
 gem 'aws-sdk'
+gem 'mailchimp-gem'

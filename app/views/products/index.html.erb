@@ -1,0 +1,34 @@
+<h1>Listing products</h1>
+<br/>
+<%= link_to 'New Product', new_product_path, :class=>"btn btn-small btn-success" %>
+<br /><br/>
+
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Amount</th>
+    <th>Product</th>
+    <th>Active</th>
+    <th>Partial</th>
+    <th colspan="3" style="text-align: center">Operations</th>
+  </tr>
+
+<% @products.each do |product| %>
+  <tr>
+    <td><%= product.name %></td>
+    <td><%= product.description.html_safe %></td>
+    <td><%= product.amount %></td>
+    <td><%= product.product_id %></td>
+    <td><%= product.active %></td>
+    <td><%= product.partial %></td>
+    <td><%= link_to "<i class='icon-search'></i>".html_safe, product %></td>
+    <td><%= link_to "<i class='icon-wrench'></i>".html_safe, edit_product_path(product) %></td>
+    <td><%= link_to "<i class='icon-trash'></i>".html_safe, product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+  </tr>
+<% end %>
+</table>
+
+
+

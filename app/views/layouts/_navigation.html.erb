@@ -8,18 +8,16 @@
       </a>
       <div class="nav-collapse">
         <ul class="nav">
-          <li><%= link_to "Home", root_path, :class => 'brand', :id => "home_menu" %></li>
+          <li><%= link_to "Home", root_path, :id => "home_menu" %></li>
 
           <li><%= link_to "Is This You?", "/pages/is_this_you", :id => "is_this_you_menu" %></li>
           <% if true == false %>
               <li><%= link_to "Work With Me", "#" %></li>
           <% end %>
           <li><%= link_to "What Makes Me Different?", "/pages/different", :id => "different_menu" %></li>
-          <li><%= link_to "Products/Services", "#", :id => "products_menu" %></li>
+          <li><%= link_to "Products", "/products_page", :id => "products_menu" %></li>
           <li><%= link_to "Meet Cathy", "/pages/meet_cathy", :id => "meet_cathy_menu" %></li>
           <li><%= link_to "Blog", "http://blog.healthyhabitsutah.com", :id => "blog_menu" %></li>
-
-          <li><%= link_to "Contact", "/pages/contact", :id => "contact_menu" %></li>
 
         </ul>
 
@@ -35,6 +33,7 @@
                       <li><%= link_to "Pages", pages_path %></li>
                       <li><%= link_to "Testimonials", testimonials_path %></li>
                       <li><%= link_to "Contacts", contacts_path %></li>
+                      <li><%= link_to "Products", products_path %></li>
                       <li><%= link_to "Blog Admin", "http://blog.healthyhabitsutah.com/wp-admin/" %></li>
                       <li>
                         <hr/>

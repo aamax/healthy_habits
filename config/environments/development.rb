@@ -31,6 +31,20 @@ HealthyHabits::Application.configure do
     password: ENV["GMAIL_PASSWORD"]
   }
 
+  ActionMailer::Base.smtp_settings = {
+      :address        => 'smtp.gmail.com',
+      :port           => '587',
+      :authentication => :plain,
+      :user_name      => 'healthy.habits.utah',
+      :password       => 'Caitlin1693',
+      :domain         => 'localhost',
+      :enable_starttls_auto => true
+  }
+  ActionMailer::Base.delivery_method = :smtp
+
+
+  HOST_SENDER = "healthy.habits.utah@gmail.com"
+
   config.paperclip_defaults = {
       :storage => :s3,
       :s3_host_name => "s3-us-west-2.amazonaws.com",

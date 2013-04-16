@@ -72,7 +72,7 @@ HealthyHabits::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.action_mailer.default_url_options = { :host => 'example.com' }
+  config.action_mailer.default_url_options = { :host => 'localhost.com:3000' }
   # ActionMailer Config
   # Setup for production - deliveries, no errors raised
   config.action_mailer.delivery_method = :smtp
@@ -90,6 +90,19 @@ HealthyHabits::Application.configure do
     password: ENV["GMAIL_PASSWORD"]
   }
 
+  ActionMailer::Base.smtp_settings = {
+      :address        => 'smtp.gmail.com',
+      :port           => '587',
+      :authentication => :plain,
+      :user_name      => 'healthy.habits.utah',
+      :password       => 'Caitlin1693',
+      :domain         => 'localhost',
+      :enable_starttls_auto => true
+  }
+  ActionMailer::Base.delivery_method = :smtp
+
+
+  HOST_SENDER = "healthy.habits.utah@gmail.com"
 
 
   # Log the query plan for queries taking more than this (works

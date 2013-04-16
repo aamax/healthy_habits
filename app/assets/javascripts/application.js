@@ -13,6 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require tinymce-jquery
+//= require angular
+//= require ng-rails-csrf
+//= require angular-resource
 //= require twitter/bootstrap
 //= require_tree .
 

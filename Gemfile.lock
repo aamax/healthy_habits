@@ -14,6 +14,12 @@ GIT
     tinymce-rails (3.5.8.1)
       railties (>= 3.1.1)
 
+GIT
+  remote: git://github.com/xrd/ng-rails-csrf.git
+  revision: e517c7e9c5c04d4c413122e4027ddc8de4dd1c1a
+  specs:
+    ng-rails-csrf (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -45,6 +51,9 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     addressable (2.3.3)
+    angular-rails (0.0.12)
+      coffee-script (~> 2.2.0)
+      rails
     annotate (2.5.0)
       rake
     arel (3.0.2)
@@ -236,6 +245,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-postgres-hstore!
+  angular-rails
   annotate
   aws-sdk
   better_errors (>= 0.7.2)
@@ -251,6 +261,7 @@ DEPENDENCIES
   jquery-ui-rails
   launchy (>= 2.2.0)
   less-rails
+  ng-rails-csrf!
   paperclip (~> 3.0)
   pg
   pry
