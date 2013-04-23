@@ -1,12 +1,22 @@
 .signup_box {
   padding-top: 2px;
   padding-bottom: 2px;
-  background: #33fbdf;
+  background: #e9e9e9;
   //border-radius: 15px;
   position: relative;
-  left: 620px;
+  left: 650px;
   top: -200px;
   width: 35em;
+  border: 4px;
+  border-style: outset;
+}
+
+.contact_btn {
+  margin-bottom: 9px !important;
+}
+
+.contact_inputs {
+  padding-left: 50px;
 }
 
 .signup_boxcontent {
@@ -20,10 +30,6 @@
   font-size: 10px !important;
 }
 
-div.signup_section h3 {
-  text-align: center !important;
-}
-
 .signup_image {
   float:left;
   padding-right: 20px;
@@ -31,16 +37,16 @@ div.signup_section h3 {
 
 .signup_header{
   text-align: center;
-  background-color: #00bf00;
+  background-color: #6788bf;
   margin-left: -10px;
   margin-top:-2px;
-  height: 20px;
+  height: 60px;
   padding: 10px;
-  //border-radius: 15px;
+  font-size: 18px;
 }
 
 .my_banner_logo {
-  width: 300px;
+  width: 350px;
   position: relative;
   top: 45px;
   left: 100px;
@@ -49,6 +55,6 @@ div.signup_section h3 {
 .my_banner_image {
   position: relative;
   top: 45px;
-  left: 75px;
+  left: 95px;
   width: 175px;
 }

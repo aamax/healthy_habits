@@ -49,4 +49,4 @@ gem "figaro", ">= 0.6.3"
 gem 'tinymce-rails', :git => 'git://github.com/spohlenz/tinymce-rails.git'
 gem "paperclip", "~> 3.0"
 gem 'aws-sdk'
-gem 'mailchimp-gem'
+gem "gibbon", "~> 0.4.6"

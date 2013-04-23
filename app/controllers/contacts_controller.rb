@@ -44,7 +44,29 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
-    respond_with Contact.create(params[:contact])
+    contact = Contact.new(params[:contact])
+    list_name = 'Healthy Habits Web Users'
+    list = Gibbon.lists({:filters => {:list_name => list_name}})["data"][0]
+
+    # add contact to system
+    x = Gibbon.list_subscribe({:id => list["id"],
+                           :email_address => contact.email,
+                           :update_existing => true,
+                           :double_optin => false,
+                           :send_welcome => false,
+                           :merge_vars => {'NAME' => "#{contact.name}", 'Group' => list_name,
+                                           'eZine' => 'yes', 'Notify' => 'yes'
+                           }})
+
+    if x == true
+      contact.save
+      redirect_to root_path
+    else
+      redirect_to root_path, :alert => "Error creating contact record. #{x.inspect}"
+    end
+
+
+
 
     #
     #@contact = Contact.new(params[:contact])
