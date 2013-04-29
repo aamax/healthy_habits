@@ -80,29 +80,20 @@ HealthyHabits::Application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"
 
-  config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: "example.com",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: ENV["GMAIL_USERNAME"],
-    password: ENV["GMAIL_PASSWORD"]
-  }
-
   ActionMailer::Base.smtp_settings = {
       :address        => 'smtp.gmail.com',
       :port           => '587',
       :authentication => :plain,
-      :user_name      => 'healthy.habits.utah',
-      :password       => 'Caitlin1693',
+      user_name: ENV["GMAIL_USERNAME"],
+      password: ENV["GMAIL_PASSWORD"],
       :domain         => 'localhost',
       :enable_starttls_auto => true
   }
   ActionMailer::Base.delivery_method = :smtp
 
 
-  HOST_SENDER = "healthy.habits.utah@gmail.com"
+  HOST_SENDER = "healthyhabitsutah@gmail.com"
+
 
 
   # Log the query plan for queries taking more than this (works

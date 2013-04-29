@@ -60,6 +60,10 @@ class ContactsController < ApplicationController
 
     if x == true
       contact.save
+
+      # send free gift document...
+
+
       redirect_to root_path
     else
       redirect_to root_path, :alert => "Error creating contact record. #{x.inspect}"
