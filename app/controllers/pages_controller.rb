@@ -11,15 +11,20 @@ class PagesController < ApplicationController
     if page_name.nil?
       redirect_to root_path
     else
-      @page = Page.find_by_name(page_name)
-      @page ||= Page.find(page_name)
 
-      if @page.nil?
-        @content = "<h1>Page Not Found.</h1>"
-        @title = "NOT FOUND"
+      if page_name == "different"
+        render "pages/partials/different"
       else
-        @content = @page.content
-        @title = @page.title
+        @page = Page.find_by_name(page_name)
+        @page ||= Page.find(page_name)
+
+        if @page.nil?
+          @content = "<h1>Page Not Found.</h1>"
+          @title = "NOT FOUND"
+        else
+          @content = @page.content
+          @title = @page.title
+        end
       end
     end
   end
