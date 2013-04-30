@@ -11,9 +11,14 @@ class PagesController < ApplicationController
     if page_name.nil?
       redirect_to root_path
     else
-
-      if page_name == "different"
+      if page_name == "home"
+        render "pages/partials/home"
+      elsif page_name == "different"
         render "pages/partials/different"
+      elsif page_name == "meet_cathy"
+        render "pages/partials/meet_cathy"
+      elsif page_name == "is_this_you"
+        render "pages/partials/is_this_you"
       else
         @page = Page.find_by_name(page_name)
         @page ||= Page.find(page_name)

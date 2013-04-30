@@ -7,9 +7,9 @@ HealthyHabits::Application.routes.draw do
   match '/products_page', :to=>'products#products_page'
 
   authenticated :user do
-    root :to => 'home#index'
+    root :to => "pages#show", :id => 'home'
   end
-  root :to => "home#index"
+  root :to => "pages#show", :id => 'home'
   devise_for :users
   resources :users
 end

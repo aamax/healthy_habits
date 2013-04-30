@@ -61,7 +61,7 @@ class ContactsController < ApplicationController
     if x == true
       contact.save
 
-      # send free gift document...
+      # TODO send free gift document...
 
 
       redirect_to root_path
