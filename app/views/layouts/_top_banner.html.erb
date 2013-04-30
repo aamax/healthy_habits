@@ -2,7 +2,7 @@
   <%= image_tag "banner_logo.gif", :class => "my_banner_logo" %>
 
   <%= image_tag "cathy_banner.gif", :class => "my_banner_image" %>
-
+  <% if params[:controller] != "devise/sessions" %>
   <div class='signup_box'>
     <div class='signup_boxcontent'>
       <div class="signup_header">
@@ -20,4 +20,5 @@
       <% end %>
     </div>
   </div>
+  <% end %>
 </div>

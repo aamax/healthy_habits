@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <html ng-app="HHabits">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Healthy Habits" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Healthy Habits" %>">
-    <%= stylesheet_link_tag "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tags %>
-    <%= yield(:head) %>
-  </head>
-  <body class="<%= controller_name %> <%= action_name %> body_general">
-        <%= render 'layouts/navigation' %>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= content_for?(:title) ? yield(:title) : "Healthy Habits" %></title>
+  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Healthy Habits" %>">
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= yield(:head) %>
+</head>
+<body class="<%= controller_name %> <%= action_name %> body_general">
+<% if params[:controller] != "devise/sessions" %>
 
-        <%= render "layouts/top_banner" %>
+    <%= render 'layouts/navigation' %>
 
-        <%= render 'layouts/messages' %>
+    <%= render "layouts/top_banner" %>
+
+    <%= render 'layouts/messages' %>
 
     <div id="main" role="main">
-          <div class="row main_page_body">
-             <div class="span9 main_section">
+      <div class="row main_page_body">
+        <div class="span9 main_section">
 
-               <%= yield %>
+          <%= yield %>
 
-            </div>
-            <div class="span3 side_section">
-                <%= render 'layouts/side_section' %>
-            </div>
-          </div>
+        </div>
+        <div class="span3 side_section">
+          <%= render 'layouts/side_section' %>
+        </div>
+      </div>
 
 
-    </div> <!--! end of #main -->
+    </div>
+    <!--! end of #main -->
     <br/> <br/> <br/> <br/> <br/>
     <%= render 'layouts/footer' %>
-  </body>
+<% else %>
+    <div id="main" role="main">
+      <div class="row main_page_body">
+        <div class="span9 main_section">
+          <br/> <br/><br/><br/><br/><br/><br/><br/><br/>
+          <%= yield %>
+        </div>
+      </div>
+
+
+    </div>
+<% end %>
+</body>
 </html>
