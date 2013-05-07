@@ -6,17 +6,19 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <div class="nav-collapse">
+      <div class="nav-collapse collapse">
         <ul class="nav">
-          <li><%= link_to "Home", root_path, :id => "home_menu" %></li>
 
-          <li><%= link_to "Is This You?", "/pages/is_this_you", :id => "is_this_you_menu" %></li>
+          <li id="home"><%= link_to "Home", root_path, :id => "home_menu" %></li>
+
+
+          <li id="is_this_you"><%= link_to "Is This You?", "/pages/is_this_you", :id => "is_this_you_menu" %></li>
           <% if true == false %>
-              <li><%= link_to "Work With Me", "#" %></li>
+              <li id="work_with_me"><%= link_to "Work With Me", "#" %></li>
           <% end %>
-          <li><%= link_to "What Makes Me Different?", "/pages/different", :id => "different_menu" %></li>
-          <li><%= link_to "Products", "/products_page", :id => "products_menu" %></li>
-          <li><%= link_to "Meet Cathy", "/pages/meet_cathy", :id => "meet_cathy_menu" %></li>
+          <li id="different"><%= link_to "What Makes Me Different?", "/pages/different", :id => "different_menu" %></li>
+          <li id="products_page"><%= link_to "Products", "/products_page", :id => "products_menu" %></li>
+          <li id="meet_cathy"><%= link_to "Meet Cathy", "/pages/meet_cathy", :id => "meet_cathy_menu" %></li>
           <li><%= link_to "Blog", "http://blog.healthyhabitsutah.com", :id => "blog_menu" %></li>
 
         </ul>
@@ -70,8 +72,9 @@
               <% end %>
 
           <% end %>
+
         </ul>
-      </div><!-- /.nav-collapse -->
-    </div><!-- /.container -->
+      </div>
+    </div> <!-- container -->
   </div><!-- /.navbar-inner -->
 </div><!-- /.navbar -->

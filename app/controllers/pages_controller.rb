@@ -97,4 +97,8 @@ class PagesController < ApplicationController
     end
 
   end
+
+  def five_secrets
+
+  end
 end

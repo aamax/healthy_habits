@@ -14,9 +14,10 @@
 .top_banner_main {
   background-image: url('/assets/maui_beach.jpg');
   background-repeat:no-repeat;
-  background-size:100% 270px;
+  background-size:100% 310px;
   position: relative;
   top: 32px;
+  height: 300px;
 }
 
 .contact_btn {
@@ -62,7 +63,8 @@
 
 .my_banner_image {
   position: relative;
-  top: 45px;
+  top: 25px;
   left: 95px;
-  width: 175px;
+  //width: 175px;
+  height: 270px;
 }

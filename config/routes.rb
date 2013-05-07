@@ -12,4 +12,6 @@ HealthyHabits::Application.routes.draw do
   root :to => "pages#show", :id => 'home'
   devise_for :users
   resources :users
+
+  match '/special_offer', :to => 'pages#five_secrets'
 end

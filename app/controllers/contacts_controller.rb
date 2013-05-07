@@ -45,7 +45,7 @@ class ContactsController < ApplicationController
   # POST /contacts.json
   def create
     contact = Contact.new(params[:contact])
-    list_name = 'Healthy Habits Web Users'
+    list_name = 'Healthy Habits Utah Contacts'
     list = Gibbon.lists({:filters => {:list_name => list_name}})["data"][0]
 
     # add contact to system
@@ -57,14 +57,9 @@ class ContactsController < ApplicationController
                            :merge_vars => {'NAME' => "#{contact.name}", 'Group' => list_name,
                                            'eZine' => 'yes', 'Notify' => 'yes'
                            }})
-
     if x == true
       contact.save
-
-      # TODO send free gift document...
-
-
-      redirect_to root_path
+      redirect_to root_path, :notice => "Thank you for registering!"
     else
       redirect_to root_path, :alert => "Error creating contact record. #{x.inspect}"
     end
@@ -97,7 +92,7 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.update_attributes(params[:contact])
-        format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
+        format.html { redirect_to @contact, notice: 'Contact was successfully updated.  NOT reflected in Mail Chimp!!!!' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -113,7 +108,7 @@ class ContactsController < ApplicationController
     @contact.destroy
 
     respond_to do |format|
-      format.html { redirect_to contacts_url }
+      format.html { redirect_to contacts_url, notice: "Contact deleted.  NOT reflected in Mail Chimp!!!!!" }
       format.json { head :no_content }
     end
   end

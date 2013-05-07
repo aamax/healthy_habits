@@ -20,19 +20,24 @@
 
     <div id="main" role="main">
       <div class="row main_page_body">
-        <div class="span9 main_section">
 
-          <%= yield %>
-
-        </div>
-        <div class="span3 side_section">
-          <%= render 'layouts/side_section' %>
-        </div>
+        <% if request.env["PATH_INFO"] == '/special_offer' %>
+            <div class="span12 special_offer_body">
+              <%= yield %>
+            </div>
+        <% else %>
+            <div class="span9 main_section">
+              <%= yield %>
+            </div>
+            <div class="span3 side_section">
+              <%= render 'layouts/side_section' %>
+            </div>
+        <% end %>
       </div>
-
-
     </div>
     <!--! end of #main -->
+
+
     <br/> <br/> <br/> <br/> <br/>
     <%= render 'layouts/footer' %>
 <% else %>
