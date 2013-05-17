@@ -19,6 +19,10 @@ class PagesController < ApplicationController
         render "pages/partials/meet_cathy"
       elsif page_name == "is_this_you"
         render "pages/partials/is_this_you"
+      elsif page_name == 'microscopy'
+        render "pages/partials/microscopy"
+      elsif page_name == 'construction'
+        render "pages/partials/construction"
       else
         @page = Page.find_by_name(page_name)
         @page ||= Page.find(page_name)

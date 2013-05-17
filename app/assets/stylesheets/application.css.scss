@@ -12,7 +12,9 @@
  *= require bootstrap_and_overrides
  *= require_tree .
 */
-
+.center_text {
+  text-align: center;
+}
 .content {
   background-color: #eee;
   padding: 20px;

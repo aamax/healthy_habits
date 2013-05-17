@@ -5,5 +5,5 @@ $(document).ready ->
   if idx != 6
     tag = str.slice(idx)
     $("#" + tag).addClass('active')
-    alert('highlighting ' + tag)
+
 

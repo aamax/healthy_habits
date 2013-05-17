@@ -1,6 +1,32 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.home_header_section {
+  font-size: 18px;
+  color: navy;
+  background-color: #ffdc73;
+  line-height: 150%;
+}
+
+.home_page_body {
+  font-size: 18px;
+  line-height: 150%;
+}
+
+.home_standout {
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  color: #d31089;
+  font-size: 28px;
+  line-height: 28px;
+  text-align: center;
+}
+
+.home_page_top_section {
+  font-size: 18px;
+  line-height: 150%;
+  color: #1b1bb3;
+  font-weight: bold;
+}
 
 #error_explanation {
   background-color: pink;
@@ -12,6 +38,10 @@
 
 li.active {
   font-weight: bold;
+}
+
+.link_white {
+  color: white !important;
 }
 
 .center_input {
