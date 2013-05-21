@@ -41,20 +41,21 @@
 
 
 <div class="top_banner_main">
-<%= image_tag "banner_logo.gif", :class => "my_banner_logo" %>
+<%= image_tag "hh_logo1.png", :class => "my_banner_logo" %>
+<%= image_tag "banner_logo.gif", :class => "banner_name_img" %>
 
 <%= image_tag "cathy_banner.gif", :class => "my_banner_image" %>
 <% if params[:controller] != "devise/sessions" %>
     <% if request.env["PATH_INFO"] != '/special_offer' %>
         <div class='signup_box'>
         <div class='signup_boxcontent'>
+
         <div class="signup_header">
           Sign up for my eZine <i>"Thrive"</i> & Special Report:<br/>
           <strong>"5 Secrets to a Healthier,<br/>
             Sexier Spring Body"</strong> <br/>
         </div>
-
-        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+        <br/>
 
         <!-- Begin MailChimp Signup Form -->
         <div id="mc_embed_signup">
@@ -74,7 +75,6 @@
                   <input type="text" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Email Address">
 
                   <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
-
                 </td>
               </tr>
 
