@@ -13,5 +13,5 @@ HealthyHabits::Application.routes.draw do
   devise_for :users
   resources :users
 
-  match '/special_offer', :to => 'pages#five_secrets'
+  #match '/special_offer', :to => 'pages#five_secrets'
 end

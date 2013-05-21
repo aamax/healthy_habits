@@ -52,14 +52,14 @@ class ContactsController < ApplicationController
     x = Gibbon.list_subscribe({:id => list["id"],
                            :email_address => contact.email,
                            :update_existing => true,
-                           :double_optin => false,
-                           :send_welcome => false,
+                           :double_optin => true,
+                           :send_welcome => true,
                            :merge_vars => {'NAME' => "#{contact.name}", 'Group' => list_name,
                                            'eZine' => 'yes', 'Notify' => 'yes'
                            }})
     if x == true
       contact.save
-      redirect_to root_path, :notice => "Thank you for registering!"
+      redirect_to root_path, :notice => "Thank you for registering!.  You'll recieve a confirmation email soon."
     else
       redirect_to root_path, :alert => "Error creating contact record. #{x.inspect}"
     end
