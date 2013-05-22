@@ -54,7 +54,7 @@ class ContactsController < ApplicationController
                            :update_existing => true,
                            :double_optin => true,
                            :send_welcome => true,
-                           :merge_vars => {'NAME' => "#{contact.name}", 'Group' => list_name,
+                           :merge_vars => {'FNAME' => "#{contact.fname}",'LNAME' => "#{contact.lname}", 'Group' => list_name,
                                            'eZine' => 'yes', 'Notify' => 'yes'
                            }})
     if x == true
