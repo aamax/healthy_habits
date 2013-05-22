@@ -49,6 +49,8 @@
                   <% unless params[:controller]=="devise/sessions" %>
                       <li class="dropdown">
                         <%= link_to "Sign In", "#", :class => "dropdown-toggle", :data => {:toggle => "dropdown"}, :id => :login_menu %>
+
+
                         <ul class="dropdown-menu">
                           <%= form_tag new_user_session_path, :class => 'form-inline navbar-form pull-right' do %>
                               <li>
