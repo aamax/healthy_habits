@@ -11,47 +11,57 @@
 </head>
 <body class="<%= controller_name %> <%= action_name %> body_general">
 <div class="container">
-<% if params[:controller] != "devise/sessions" %>
-    <%= render 'layouts/navigation' %>
+  <% if params[:controller] != "devise/sessions" %>
+      <div class="row">
+        <div class="span12">
+          <%= render 'layouts/navigation' %>
 
-    <%= render "layouts/top_banner" %>
-
-    <%= render 'layouts/messages' %>
-
-    <div id="main" role="main">
-      <div class="row main_page_body">
-        <% if request.env["PATH_INFO"] == '/special_offer' %>
-            <div class="span12 special_offer_body">
-              <%= yield %>
-            </div>
-        <% else %>
-            <div class="span9 main_section">
-              <%= yield %>
-            </div>
-            <div class="span3 side_section">
-              <%= render 'layouts/side_section' %>
-            </div>
-        <% end %>
-      </div>
-    </div>
-    <!--! end of #main -->
+          <%= render "layouts/top_banner" %>
 
 
-    <br/> <br/> <br/> <br/> <br/>
-    <%= render 'layouts/footer' %>
-<% else %>
-    <div id="main" role="main">
-      <div class="row main_page_body">
-        <div class="span9 main_section">
-          <br/> <br/><br/><br/><br/><br/><br/><br/><br/>
-          <%= yield %>
+          <%= render "layouts/sign_up_box" %>
+
+          <%= render 'layouts/messages' %>
+
         </div>
       </div>
 
+      <div id="main" role="main">
+        <div class="row main_page_body">
+          <% if request.env["PATH_INFO"] == '/special_offer' %>
+              <div class="span12 special_offer_body">
+                <%= yield %>
+              </div>
+          <% else %>
+              <div class="span9 main_section">
+                <%= yield %>
+              </div>
+              <div class="span3 side_section">
+                <%= render 'layouts/side_section' %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+      <!--! end of #main -->
 
-    </div>
-<% end %>
+
+      <br/> <br/> <br/> <br/> <br/>
+      <%= render 'layouts/footer' %>
+  <% else %>
+      <div id="main" role="main">
+        <div class="row main_page_body">
+          <div class="span9 main_section">
+            <br/> <br/><br/><br/><br/><br/><br/><br/><br/>
+            <%= yield %>
+          </div>
+        </div>
+
+
+      </div>
+  <% end %>
 
 </div>
+
+
 </body>
 </html>
