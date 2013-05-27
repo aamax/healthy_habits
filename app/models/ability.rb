@@ -6,6 +6,7 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
     else
+      cannot :manage, Contact
       can :read, Page
       cannot :manage, User
     end

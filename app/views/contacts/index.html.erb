@@ -1,7 +1,7 @@
 <div ng-controller="ContactCtrl">
 
   <h1>Listing contacts [{{contacts.length}}]</h1>
-  <button ng-click="createContact()">Add Contact</button><br/><br/>
+  <!--<button ng-click="createContact()">Add Contact</button><br/><br/>-->
   <table class="table table-striped">
     <tr>
       <th>Name</th>
@@ -28,12 +28,12 @@
           </th>
           <th>
             <a data-confirm="Are you sure?" ng-click="deleteContact(c)" title="delete contact"
-               id=delete_{{c.id}}><i class='icon-trash'></i></a>
+               id=delete_{{c.id}}><i class='icon-trash icon-large'></i></a>
 
             &nbsp;&nbsp;&nbsp;
 
             <a ng-click="updateContact(c)" title="save contact"
-               id=save_{{c.id}}><i class='icon-save'></i></a>
+               id=save_{{c.id}}><i class='icon-save icon-large'></i></a>
 
           </th>
         </tr>

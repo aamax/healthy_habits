@@ -28,12 +28,12 @@
       </td>
 
       <td>
-        <%= link_to "Edit", edit_user_path(user), :class=>"btn btn-mini btn-primary btn_test span1" %>
+        <%= link_to "<i class='icon-save icon-large'></i>".html_safe, edit_user_path(user), :class=>"span1" %>
       </td>
 
       <td>
-        <%= link_to("Delete", user_path(user), :data => { :confirm => "Are you sure?" },
-                      :method => :delete, :class => 'btn btn-mini btn-danger btn_test span1') unless user == current_user %>
+        <%= link_to("<i class='icon-trash icon-large'></i>".html_safe, user_path(user), :data => { :confirm => "Are you sure?" },
+                      :method => :delete, :class => 'span1') unless user == current_user %>
       </td>
     </tr>
   <% end %>

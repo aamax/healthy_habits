@@ -1,4 +1,5 @@
 class TestimonialsController < ApplicationController
+  load_and_authorize_resource
   # GET /testimonials
   # GET /testimonials.json
   def index

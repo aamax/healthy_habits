@@ -2,6 +2,7 @@ class ContactsController < ApplicationController
   require "json"
 
   respond_to :json, :html
+  load_and_authorize_resource
 
   # GET /contacts
   # GET /contacts.json
@@ -27,14 +28,14 @@ class ContactsController < ApplicationController
 
   # GET /contacts/new
   # GET /contacts/new.json
-  def new
-    @contact = Contact.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @contact }
-    end
-  end
+  #def new
+  #  @contact = Contact.new
+  #
+  #  respond_to do |format|
+  #    format.html # new.html.erb
+  #    format.json { render json: @contact }
+  #  end
+  #end
 
   # GET /contacts/1/edit
   def edit
