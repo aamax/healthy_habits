@@ -16,18 +16,41 @@ describe ContactsController do
     {}
   end
 
-  describe "GET index" do
-    # if not signed in as admin - no access
+  describe "index" do
+    context "not signed in" do
+      it "should not allow access to the index action" do
+        get :index
+        response.should be_redirect
 
-    # allow access if admin user
+        flash.alert.should == "You are not authorized to access this page."
+      end
+    end
 
+    context "admin user signed in" do
+      it "should allow access to the index action" do
+        # sign in admin user
+        @request.env["devise.mapping"] = Devise.mappings[:admin]
+        @admin_user = FactoryGirl.create(:user, email: "test6@example.com")
+        @admin_user.add_role :admin
+        sign_in @admin_user
 
-    #it "assigns all contacts as @contacts" do
-    #  contact = Contact.create! valid_attributes
-    #  get :index, {}, valid_session
-    #  assigns(:contacts).should eq([contact])
-    #end
+        get :index
+        response.should be_success
+      end
+
+      it "should make sure all the contacts are in the index"
+    end
   end
+
+  it "should cover show action"
+  it "should cover edit action"
+  it "should cover update action"
+  it "should cover new action"
+  it "should cover create actions"
+  it "should cover delete action"
+  it "should validate email address format"
+  it "should validate fname and lname are required"
+
 
   describe "GET show" do
     # if not signed in as admin - no access
