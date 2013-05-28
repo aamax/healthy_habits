@@ -46,27 +46,28 @@ class ContactsController < ApplicationController
   # POST /contacts.json
   def create
     contact = Contact.new(params[:contact])
-    list_name = 'Healthy Habits Utah Contacts'
-    list = Gibbon.lists({:filters => {:list_name => list_name}})["data"][0]
+    if contact.save
+      list_name = 'Healthy Habits Utah Contacts'
+      list = Gibbon.lists({:filters => {:list_name => list_name}})["data"][0]
 
-    # add contact to system
-    x = Gibbon.list_subscribe({:id => list["id"],
-                           :email_address => contact.email,
-                           :update_existing => true,
-                           :double_optin => true,
-                           :send_welcome => true,
-                           :merge_vars => {'FNAME' => "#{contact.fname}",'LNAME' => "#{contact.lname}", 'Group' => list_name,
-                                           'eZine' => 'yes', 'Notify' => 'yes'
-                           }})
-    if x == true
-      contact.save
-      redirect_to root_path, :notice => "Thank you for registering!.  You'll recieve a confirmation email soon."
+      # add contact to system
+      x = Gibbon.list_subscribe({:id => list["id"],
+                             :email_address => contact.email,
+                             :update_existing => true,
+                             :double_optin => true,
+                             :send_welcome => true,
+                             :merge_vars => {'FNAME' => "#{contact.fname}",'LNAME' => "#{contact.lname}", 'Group' => list_name,
+                                             'eZine' => 'yes', 'Notify' => 'yes'
+                             }})
+      if x == true
+
+        redirect_to root_path, :notice => "Thank you for registering!.  You'll recieve a confirmation email soon."
+      else
+        redirect_to root_path, :alert => "Error creating contact record. #{x.inspect}"
+      end
     else
-      redirect_to root_path, :alert => "Error creating contact record. #{x.inspect}"
+      redirect_to root_path, :alert => "Error creating contact record: <br/>FName: #{contact.fname}<br/>LName: #{contact.lname}<br/>Email: #{contact.email}".html_safe
     end
-
-
-
 
     #
     #@contact = Contact.new(params[:contact])

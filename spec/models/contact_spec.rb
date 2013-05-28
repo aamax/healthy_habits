@@ -17,5 +17,41 @@
 require 'spec_helper'
 
 describe Contact do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "must not save with an invalid email address" do
+    contact = Contact.new
+    contact.email = "foo"
+    contact.fname = "bar"
+    contact.lname = "baz"
+
+    contact.save.should == false
+  end
+
+  it "must not save without an fname" do
+    contact = Contact.new
+    contact.email = "foo@example.com"
+    contact.fname = ""
+    contact.lname = "baz"
+
+    contact.save.should == false
+  end
+
+  it "must not save without an lname" do
+    contact = Contact.new
+    contact.email = "foo@example.com"
+    contact.fname = ""
+    contact.lname = "baz"
+
+    contact.save.should == false
+  end
+
+  it "must save with valid params" do
+    contact = Contact.new
+    contact.email = "foo@example.com"
+    contact.fname = "bar"
+    contact.lname = "baz"
+
+    contact.save.should == true
+  end
+
+
 end

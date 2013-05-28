@@ -17,7 +17,14 @@
 class Contact < ActiveRecord::Base
   attr_accessible :email, :fname, :lname, :meta_data, :ezine, :group, :notifications
 
-  # TODO don't allow duplicates
-  # TODO after create: send welcome email if group="WEB"
-  # TODO      else - prompt to send welcome email
+  email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+  validates   :fname, :presence => true
+
+  validates   :lname, :presence => true
+
+  validates   :email,
+              :presence => true,
+              :format => { :with => email_regex },
+              :uniqueness => { :case_sensitive => false }
 end

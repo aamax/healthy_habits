@@ -34,6 +34,14 @@ describe ProductsController do
     {}
   end
 
+  it "should test index"
+  it "should test show"
+  it "should test edit"
+  it "should test update"
+  it "should test new"
+  it "should test create"
+  it "should test destroy"
+
   #describe "GET index" do
   #  it "assigns all products as @products" do
   #    product = Product.create! valid_attributes

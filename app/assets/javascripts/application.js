@@ -21,6 +21,6 @@
 
 $(function() {
     $('.alert').delay(1000).fadeIn('normal', function() {
-        $(this).delay(2000).fadeOut();
+        $(this).delay(5000).fadeOut();
     });
 });
