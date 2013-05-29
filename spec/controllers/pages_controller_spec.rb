@@ -13,6 +13,8 @@ describe PagesController do
   describe "show" do
     context "not signed in" do
       context "static pages" do
+        render_views
+
         it "should show home page" do
           get :show, id: "home"
           response.should render_template "pages/partials/home"
@@ -51,6 +53,9 @@ describe PagesController do
           get :show, id: "saved_page"
           response.should be_success
 
+          # show edit button
+          response.should_not have_link('edit')
+
           get :show, id: "no_page"
           response.should be_redirect
         end
@@ -58,6 +63,8 @@ describe PagesController do
     end
 
     context "admin user signed in" do
+      render_views
+
       before :each do
         # sign in admin user
         @request.env["devise.mapping"] = Devise.mappings[:admin]
@@ -105,7 +112,7 @@ describe PagesController do
         response.should be_success
 
         # show edit button
-        response.should have_link('edit', href: edit_page_path(page))
+        response.body.should have_link('edit', href: edit_page_path(page))
 
         get :show, id: "no_page"
         response.should be_redirect
