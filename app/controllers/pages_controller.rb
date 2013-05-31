@@ -23,6 +23,10 @@ class PagesController < ApplicationController
         render "pages/partials/microscopy"
       elsif page_name == 'events'
         render "pages/partials/events"
+      elsif page_name == 'cleanse'
+        render "pages/partials/cleanse"
+      elsif page_name == 'coaching'
+        render "pages/partials/coaching"
       elsif page_name == 'construction'
         render "pages/partials/construction"
       else
