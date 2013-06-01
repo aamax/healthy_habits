@@ -87,11 +87,28 @@ class ContactsController < ApplicationController
   def cleanse_notice
     # if contact already exists then edit, otherwise create
     contact = Contact.find_by_email(params[:contact][:email])
-    contact ||= Contact.new(params[:contact])
-    if !contact.save
-        redirect_to root_path,
-                    :alert => "Error creating contact record: <br/>FName: #{contact.fname}<br/>LName: #{contact.lname}<br/>Email: #{contact.email}".html_safe
+    if contact.nil?
+      contact = Contact.new(params[:contact])
+      v = contact.save
+    else
+      v = contact.update_attributes(params[:contact])
     end
+
+    puts "---------------------------------------"
+    puts "PARAMS  #{params.inspect}"
+    puts "CONTACT: #{contact.inspect}"
+    puts "======================================="
+
+    if !v
+        redirect_to root_path,
+                    :alert => "Error creating contact record: <br/>
+                              FName: #{contact.fname}<br/>
+                              LName: #{contact.lname}<br/>
+                              Email: #{contact.email}".html_safe
+        return
+    end
+
+    puts "registering with Gibbon..."
 
     x = register_for_cleanse_notice contact
     if x == true
@@ -103,7 +120,11 @@ class ContactsController < ApplicationController
 
   def register_for_cleanse_notice contact
     list_name = 'Healthy Habits Utah Cleanse Notice'
-    list = Gibbon.lists({:filters => {:list_name => list_name}})["data"][0]
+
+    lists = Gibbon.lists({:filters => {:list_name => list_name}})["data"]
+    puts "LISTS FROM GIBBON:"
+    puts lists.inspect
+    list = lists[0]
 
     # add contact to system
     x = Gibbon.list_subscribe({:id => list["id"],
