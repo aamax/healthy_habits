@@ -11,7 +11,7 @@ class ContactsController < ApplicationController
     #  format.html # index.html.erb
     #  format.json { render json: @contacts }
     #end
-    redirect_to root_path
+    redirect_to root_path, :alert => "You may not access this page"
   end
 
   # GET /contacts/1
@@ -21,12 +21,12 @@ class ContactsController < ApplicationController
     #  format.html # show.html.erb
     #  format.json { render json: @contact }
     #end
-    redirect_to root_path
+    redirect_to root_path, :alert => "You may not access this page"
   end
 
   # GET /contacts/1/edit
   def edit
-    redirect_to root_path
+    redirect_to root_path, :alert => "You may not access this page"
   end
 
   # POST /contacts
@@ -51,7 +51,7 @@ class ContactsController < ApplicationController
     #    format.json { render json: @contact.errors, status: :unprocessable_entity }
     #  end
     #end
-    redirect_to root_path
+    redirect_to root_path, :alert => "You may not access this page"
   end
 
   # DELETE /contacts/1
@@ -63,7 +63,7 @@ class ContactsController < ApplicationController
     #  format.html { redirect_to contacts_url, notice: "Contact deleted.  NOT reflected in Mail Chimp!!!!!" }
     #  format.json { head :no_content }
     #end
-    redirect_to root_path
+    redirect_to root_path, :alert => "You may not access this page"
   end
 
   private
