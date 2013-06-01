@@ -9,6 +9,8 @@ class Ability
       cannot :manage, Contact
       can :read, Page
       cannot :manage, User
+
+      can [:cleanse_notice], Contact
     end
   end
 end

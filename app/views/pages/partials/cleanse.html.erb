@@ -2,6 +2,93 @@
   <span class='home_bold_text'>You Have An Acidic Body</span><br/>
   Our bodies are alkaline by design and acidic by function.  They run best when kept alkaline at 7.325 pH.
   I'll teach you how to obtain and maintain a healthy pH for your body and enjoy the process.
-
-  <br/>
 </p>
+
+<p class="home_page_body">
+  <span class='home_bold_text'>You Should Avoid This List Of Top Ten Acidic Foods</span><br/>
+  A food intolerance can get in the way of losing weight and more importantly feeling healthy and performing at your peak.
+  I'll help you get to the botom of this issue.
+</p>
+
+<p class="home_page_body">
+  <span class='home_bold_text'>Your Hormones May Be Imbalanced</span><br/>
+  Hormonal imbalance can cause accelerated aging and weight gain.  Once we hit a certain age, we all have to think about
+  this.  But I'll teach you how to balance your hormones to boost your mood, feel sexy, and rev up your metabolism!
+</p>
+
+<p class="home_page_body">
+  <span class='home_bold_text'>You Have A Toxic Body</span><br/>
+  Toxins are everywhere - they're in your water, makeup, plastic food storage and household cleaners.  Your levels may
+  or may not be extreme, but any amount of toxins can slow your metabolism and increase your acidity.  I'll teach you how
+  to detoxify and lose weight.
+</p>
+
+<p class="home_page_body">
+  Cleansing rejuvenates and is the reset button on everything in your life.  This unique cleanse will guide you through.
+  It is a trans-dimensional experience that is profoundly detoxifying and rejuvenating to the body.
+  The healing process takes place on many levels: physical, mental, emotional and spiritual - with support of juices,
+  shakes, soups, raw organic food, visualization, journaling, deep breathing, salt baths, saunas and yoga.
+</p>
+
+<h2>Program Includes:</h2>
+
+<p class="home_page_body">
+  <span class='home_bold_text'>Conference Calls</span><br/>
+  On this cleanse, you will participate in five conference calls.  Your grocery list is covered on the first call making
+  shopping a breeze.  I will explain the science behind alkalizing your body.  There will be nutritional calls and home
+  therapy calls.  Calls are recorded and sent to you to listen to at your leisure should you not be able to be on the live
+  call.
+</p>
+
+<p class="home_page_body">
+  <span class='home_bold_text'>Facebook Group</span><br/>
+  I have a private Facebook page for you to access.  You can go there for support, to ask questions and to exchange recipes.
+  I'm there frequently answering questions so it becomes a bit of a classroom for everyone.  Lots of fun and always new
+  friendships made.  A great place to go for a community of like-minded people interested in taking their health to the
+  next level.
+</p>
+
+<p class="home_page_body">
+  <span class='home_bold_text'>Products and Supplements</span><br/>
+  I use only the highest grade products and supplements.  Your body will release old stuck toxins with ease when supported
+  by the very best scientifically formulated products.  The products help to clean and build your blood.  Alkalizing and
+  building your blood is the real beauty of this cleanse.  Learning to do this is the real Miracle.
+</p>
+
+<p class="home_page_body">
+  <span class='home_bold_text'>My Personal Attention</span><br/>
+  While on this cleanse I will help you closely monitor your progress.  For those of you that have tried alone to do a
+  self-cleanse and have felt the need for more support and guidance - this program is for YOU!  I will also send attachments
+  out to you prior to the cleanse with my favorite recipes, a daily protocol and a 14 day tracking system that will
+  chart your journey.
+</p>
+
+<h3>What an incredibly healthy gift to yourself!</h3>
+
+<p class="home_page_body">
+
+<% if params[:controller] != "devise/sessions" %>
+        <div class='cleanse_signup_box'>
+          <div class='signup_boxcontent'>
+
+            <div class="signup_header">
+              <br/>
+              Enter your name and email address below to get a heads up when the next cleanse begins! <br/>
+            </div>
+            <br/>
+
+            <%= form_tag :controller => "contacts", :action => "cleanse_notice", :method => "POST" do %>
+                <%= text_field(:contact, :fname, :placeholder => "First Name", :class => "contact_field") %>
+                <%= text_field(:contact, :lname, :placeholder => "Last Name", :class => "contact_field") %>
+                <br/>
+                <%= text_field(:contact, :email, :placeholder => "Enter Email", :class => "email_contact_field") %>
+
+                <%= submit_tag :submit, class: "btn btn-small contact_btn" %>
+            <% end %>
+
+            * your information will never be sold or used for anything else.
+          </div>
+        </div>
+
+<% end %>
+

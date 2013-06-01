@@ -7,8 +7,6 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @contacts }
@@ -18,8 +16,6 @@ class ContactsController < ApplicationController
   # GET /contacts/1
   # GET /contacts/1.json
   def show
-    @contact = Contact.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @contact }
@@ -39,7 +35,7 @@ class ContactsController < ApplicationController
 
   # GET /contacts/1/edit
   def edit
-    @contact = Contact.find(params[:id])
+
   end
 
   # POST /contacts
@@ -87,11 +83,42 @@ class ContactsController < ApplicationController
     #end
   end
 
+
+  def cleanse_notice
+    # if contact already exists then edit, otherwise create
+    contact = Contact.find_by_email(params[:contact][:email])
+    contact ||= Contact.new(params[:contact])
+    if !contact.save
+        redirect_to root_path,
+                    :alert => "Error creating contact record: <br/>FName: #{contact.fname}<br/>LName: #{contact.lname}<br/>Email: #{contact.email}".html_safe
+    end
+
+    x = register_for_cleanse_notice contact
+    if x == true
+      redirect_to root_path, :notice => "Thank you for registering!.  You'll recieve a confirmation email soon."
+    else
+      redirect_to root_path, :alert => "Error creating contact record. #{x.inspect}"
+    end
+  end
+
+  def register_for_cleanse_notice contact
+    list_name = 'Healthy Habits Utah Cleanse Notice'
+    list = Gibbon.lists({:filters => {:list_name => list_name}})["data"][0]
+
+    # add contact to system
+    x = Gibbon.list_subscribe({:id => list["id"],
+                               :email_address => contact.email,
+                               :update_existing => true,
+                               :double_optin => true,
+                               :send_welcome => true,
+                               :merge_vars => {'FNAME' => "#{contact.fname}",'LNAME' => "#{contact.lname}", 'Group' => list_name,
+                                               'eZine' => 'yes', 'Notify' => 'yes'
+                               }})
+  end
+
   # PUT /contacts/1
   # PUT /contacts/1.json
   def update
-    @contact = Contact.find(params[:id])
-
     respond_to do |format|
       if @contact.update_attributes(params[:contact])
         format.html { redirect_to @contact, notice: 'Contact was successfully updated.  NOT reflected in Mail Chimp!!!!' }
@@ -106,7 +133,6 @@ class ContactsController < ApplicationController
   # DELETE /contacts/1
   # DELETE /contacts/1.json
   def destroy
-    @contact = Contact.find(params[:id])
     @contact.destroy
 
     respond_to do |format|
