@@ -6,11 +6,10 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
     else
-      cannot :manage, Contact
       can :read, Page
       cannot :manage, User
 
-      can [:cleanse_notice], Contact
+      can :manage, Contact
     end
   end
 end
