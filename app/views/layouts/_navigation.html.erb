@@ -6,6 +6,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
+
       <div class="nav-collapse collapse">
         <ul class="nav">
 
@@ -19,30 +20,35 @@
           <li id="different"><%= link_to "What Makes Me Different?", "/pages/different", :id => "different_menu" %></li>
 
           <li id="meet_cathy"><%= link_to "Meet Cathy", "/pages/meet_cathy", :id => "meet_cathy_menu" %></li>
+
+          <li><%= link_to "Products & Services", "https://healthy-habits-shopping.herokuapp.com" %></li>
           <li><%= link_to "Blog", "http://blog.healthyhabitsutah.com", :id => "blog_menu" %></li>
           <li><%= link_to "Events", "/pages/events", :id => "events" %></li>
+		  <li><%= link_to "Contact", "/pages/contact", :id => "contact_menu_top"></li>
         </ul>
 
         <ul class="nav pull-right">
           <% if user_signed_in? %>
-              <li class="user_nav_name"><%= current_user.name %></li>
-              <% #if current_user.has_role? :admin
-                 if true %>
+
+              <% if current_user.has_role? :admin %>
                   <li class="dropdown">
-                    <%= link_to "Admin", "#", :class => "dropdown-toggle", :data => {:toggle => "dropdown"}, :id => :admin_menu %>
+                    <%= link_to current_user.name, "#", :class => "dropdown-toggle", :data => {:toggle => "dropdown"}, :id => :admin_menu %>
                     <ul class="dropdown-menu">
                       <li><%= link_to "Users", users_path %></li>
                       <li><%= link_to "Pages", pages_path %></li>
                       <li><%= link_to "Testimonials", testimonials_path %></li>
                       <li><%= link_to "Contacts", contacts_path %></li>
-                      <li><%= link_to "Products", products_path %></li>
+
                       <li><%= link_to "Blog Admin", "http://blog.healthyhabitsutah.com/wp-admin/" %></li>
+                      <li><%= link_to "Shopping - Spree Admin", "/shopping/admin" %></li>
                       <li>
                         <hr/>
                       </li>
                       <li><%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %></li>
                     </ul>
                   </li>
+              <% else %>
+                <%= current_user.name %>
               <% end %>
           <% else %>
               <% if current_user.nil? %>
@@ -54,7 +60,8 @@
                         <ul class="dropdown-menu">
                           <%= form_tag new_user_session_path, :class => 'form-inline navbar-form pull-right' do %>
                               <li>
-                                <div class="center_input"><input type="text" placeholder="Email" name='user[email]'></div>
+                                <div class="center_input"><input type="text" placeholder="Email" name='user[email]'>
+                                </div>
 
                               </li>
                               <li>
@@ -77,6 +84,8 @@
 
         </ul>
       </div>
-    </div> <!-- container -->
-  </div><!-- /.navbar-inner -->
+    </div>
+    <!-- container -->
+  </div>
+  <!-- /.navbar-inner -->
 </div><!-- /.navbar -->

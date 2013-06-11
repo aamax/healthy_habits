@@ -38,6 +38,11 @@ class ContactsController < ApplicationController
   def cleanse_notice
     handle_contact_create 'Healthy Habits Utah Cleanse Notice'
   end
+  
+  def microscopy_notice
+    handle_contact_create 'Microscopy Group'
+  end
+  
 
   # PUT /contacts/1
   # PUT /contacts/1.json
