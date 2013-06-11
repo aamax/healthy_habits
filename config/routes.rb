@@ -1,4 +1,6 @@
 HealthyHabits::Application.routes.draw do
+  #resources :products
+  resources :contacts
   resources :testimonials
   resources :pages
 
@@ -12,12 +14,12 @@ HealthyHabits::Application.routes.draw do
   devise_for :users
   resources :users
 
-  devise_scope :user do
-    get '/login', :to => "devise/sessions#new"
-    get '/signup', :to => "devise/registrations#new"
-    post '/users/sign_out' => 'devise/sessions#destroy'
-    post '/logout' => 'devise/sessions#destroy'
-  end
+  #devise_scope :user do
+  #  get '/login', :to => "devise/sessions#new"
+  #  get '/signup', :to => "devise/registrations#new"
+  #  post '/users/sign_out' => 'devise/sessions#destroy'
+  #  post '/logout' => 'devise/sessions#destroy'
+  #end
 
   match '/cleanse_notice', :to => 'contacts#cleanse_notice'
   match '/microscopy_notice', :to => 'contacts#microscopy_notice'
