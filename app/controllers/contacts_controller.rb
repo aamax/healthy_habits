@@ -31,8 +31,21 @@ class ContactsController < ApplicationController
 
   # POST /contacts
   # POST /contacts.json
+
+
   def create
-    handle_contact_create 'Healthy Habits Utah Contacts'
+    # TODO
+    # gonna need to iterate through the check boxes and sign up for the lists
+    # the user is interested in (if any)
+    # modify sign up so it doesn't send a confirm for each list etc
+
+    #handle_contact_create 'Healthy Habits Utah Contacts'
+    @contact = Contact.find_by_email(params[:email])
+    @contact ||= Contact.new(fname: params[:fname], lname: params[:lname], email: params[:email])
+
+
+
+    respond_with @contact
   end
 
   def cleanse_notice
