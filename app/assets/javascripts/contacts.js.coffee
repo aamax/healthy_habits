@@ -1,10 +1,7 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-angular.module "HHabits", ["ngResource", "ng-rails-csrf"]
-
-
-@ContactCtrl = ($scope, $resource) ->
+@ContactIndexCtrl = ($scope, $resource) ->
   Contact = $resource("/contacts/:id", {id: "@id"}, {update: {method: "PUT"}})
   $scope.contacts = Contact.query()
 
