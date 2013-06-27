@@ -10,6 +10,8 @@ if defined?(Bundler)
 end
 
 module HealthyHabits
+  REPORT_NAME = '<strong><i>5 Secrets to a Healthier Sexier Body</i></strong>'
+
   class Application < Rails::Application
 
     # don't generate RSpec tests for views and helpers

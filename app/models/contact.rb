@@ -15,6 +15,8 @@
 #
 
 class Contact < ActiveRecord::Base
+  serialize :meta_data, ActiveRecord::Coders::Hstore
+
   attr_accessible :email, :fname, :lname, :meta_data, :ezine, :group, :notifications
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -27,4 +29,13 @@ class Contact < ActiveRecord::Base
               :presence => true,
               :format => { :with => email_regex },
               :uniqueness => { :case_sensitive => false }
+
+  def update_hstore(key, value)
+    self.meta_data = {} if self.meta_data.nil?
+
+    new_hash = self.meta_data.clone
+    new_hash[key] = value.to_s
+    self.meta_data = new_hash
+  end
+
 end

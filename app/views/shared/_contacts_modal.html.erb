@@ -1,0 +1,93 @@
+<div ng-controller='ContactCtrl'>
+  <div class="contacts_modal_window modal hide fade" id="contactsModal">
+    <div class="modal-header contact_hdr">
+      Healthy Habits Utah Sign Up Form
+    </div>
+
+    <div class="modal-body">
+      <table>
+        <tr>
+          <td>
+            <h4>Contact Information:</h4>
+            <%= text_field(:contact, :fname, :placeholder => "First Name", :class => "contact_fname_field", 'ng-model' => 'fname') %>
+            <%= text_field(:contact, :lname, :placeholder => "Last Name", :class => "contact_lname_field", 'ng-model' => 'lname') %>
+            <br/>
+            <%= email_field(:contact, :email, :placeholder => "Email Address", :class => "email_contact_form_field", 'ng-model' => 'email') %>
+            <br/>
+            All subscriptions will receive my Free Report:<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= HealthyHabits::REPORT_NAME.html_safe %><br/>
+
+            <h4>I'm interested in:</h4>
+
+            <table class='interest_list'>
+              <tr>
+                <td>
+                  <%= check_box_tag(:contact, :ezine_list, 'ng-model' => 'ezine_list') %>
+
+                <td>
+                  eZine <i>Thrive</i>
+                  <br/> <br/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input type='checkbox' id='microscopy_list' ng-model='microscopy_list' name='microscopy_list'>
+                </td>
+                <td>
+                  Micropscopy: Live Blood Analysis Sessions <br/> <br/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input type='checkbox' id='cleanse_list' ng-model='cleanse_list' name='cleanse_list'>
+                </td>
+                <td>
+                  Upcoming Cleanses <br/> <br/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input type='checkbox' id='coaching_list' ng-model='coaching_list' name='coaching_list'>
+                </td>
+                <td>
+                  Coaching <br/> <br/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input type='checkbox' id='products_list' ng-model='products_list' name='products_list'>
+                </td>
+                <td>
+                  Health & Nutrition Products <br/> <br/>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input type='checkbox' id='events_list' ng-model='events_list' name='events_list'>
+                </td>
+                <td>
+                  Other events and specials <br/> <br/>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            <%= image_tag "cathy_banner_2.gif", :class => 'contacts_image pull-right' %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <span class="info_disclaimer">* your information will never be sold or used for anything else.</span>
+            <br/><br/>
+            Click <%= link_to " Here ", "mailto:healthyhabitsutah@gmail.com", :class => 'btn btn-small btn-primary' %>
+            to send me an email
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="modal-footer">
+      <%= link_to "OK", '#', 'ng-click' => 'enterContact()', class: 'btn btn-small btn-success' %>
+      <%= link_to "Cancel", '#', 'data-dismiss'=>'modal', class: 'btn btn-small btn-warning' %>
+    </div>
+  </div>
+</div>

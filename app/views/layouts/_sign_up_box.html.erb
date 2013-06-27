@@ -1,27 +1,19 @@
 <% if params[:controller] != "devise/sessions" %>
     <% if request.env["PATH_INFO"] != '/special_offer' %>
+        <br/><br/><br/><br/><br/><br/>
         <div class='signup_box'>
           <div class='signup_boxcontent'>
-
             <div class="signup_header">
-              Sign up for my eZine <i>"Thrive"</i> & Special Report:<br/>
-              <strong>"5 Secrets to a Healthier,<br/>
-                Sexier Spring Body"</strong> <br/>
+              Click &nbsp;
+
+              <a href="#contactsModal" role="button" class="btn btn-success btn-small"
+                             data-toggle="modal">Here</a>&nbsp;
+
+              to Sign up for my eZine <i>"Thrive"</i> & Special Report:<br/>
+              <strong>"<%= HealthyHabits::REPORT_NAME.html_safe %>"</strong> <br/>
             </div>
-            <br/>
-
-                <%= form_tag :controller => "contacts", :action => "create", :method => "POST" do %>
-                    <%= text_field(:contact, :fname, :placeholder => "First Name", :class => "contact_field") %>
-                    <%= text_field(:contact, :lname, :placeholder => "Last Name", :class => "contact_field") %>
-                    <br/>
-                    <%= text_field(:contact, :email, :placeholder => "Enter Email", :class => "email_contact_field") %>
-
-                    <%= submit_tag :submit, class: "btn btn-small contact_btn" %>
-                <% end %>
-
-            * your information will never be sold or used for anything else.
           </div>
         </div>
-
+        <br/>
     <% end %>
 <% end %>

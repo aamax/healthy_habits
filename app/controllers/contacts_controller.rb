@@ -4,6 +4,67 @@ class ContactsController < ApplicationController
   respond_to :json, :html
   load_and_authorize_resource
 
+  def create
+    @contact = Contact.find_by_email(params[:email])
+    @contact ||= Contact.new(fname: params[:fname], lname: params[:lname], email: params[:email])
+    groups = {ezine: params[:ezine_list],
+              microscopy: params[:microscopy_list],
+              cleanse: params[:cleanse_list],
+              coaching: params[:coaching_list],
+              products: params[:products_list],
+              events: params[:events_list]
+              }
+
+    @contact.meta_data = groups
+
+    list_name = "Healthy Habits Utah Contacts"
+    lists = Gibbon.lists({:filters => {:list_name => list_name}})
+    list = lists["data"][0]
+
+    groupings = Gibbon.listInterestGroupings(list)[0]
+
+    group_str = ""
+    if groups[:microscopy] == true
+      group_str = add_string(group_str, "Microscopy")
+    end
+    if groups[:cleanse] == true
+      group_str = add_string(group_str, "Cleanses")
+    end
+    if groups[:coaching] == true
+      group_str = add_string(group_str, "Coaching")
+    end
+    if groups[:ezine] == true
+      group_str = add_string(group_str, "eZine")
+    end
+    if groups[:products] == true
+      group_str = add_string(group_str, "Products")
+    end
+    if groups[:events] == true
+      group_str = add_string(group_str, "Events")
+    end
+
+    new_contact = {:id => list["id"],
+                   :email_address => @contact.email,
+                   :update_existing => true,
+                   :double_optin => true,
+                   :send_welcome => true,
+                   :merge_vars => {
+                                    'FNAME' => "#{@contact.fname}",
+                                    'LNAME' => "#{@contact.lname}",
+                                    'GROUPINGS' => {
+                                        0 => {
+                                              'id' => groupings["id"],
+                                              'groups' => group_str
+                                        }
+                                    }
+                                  }
+                  }
+    x = Gibbon.list_subscribe(new_contact)
+
+    result = @contact.save
+    respond_with @contact
+  end
+
   # GET /contacts
   # GET /contacts.json
   def index
@@ -31,18 +92,8 @@ class ContactsController < ApplicationController
 
   # POST /contacts
   # POST /contacts.json
-  def create
-    handle_contact_create 'Healthy Habits Utah Contacts'
-  end
 
-  def cleanse_notice
-    handle_contact_create 'Healthy Habits Utah Cleanse Notice'
-  end
-  
-  def microscopy_notice
-    handle_contact_create 'Microscopy Group'
-  end
-  
+
 
   # PUT /contacts/1
   # PUT /contacts/1.json
@@ -72,49 +123,12 @@ class ContactsController < ApplicationController
   end
 
   private
-
-  def handle_contact_create list_name
-    # if contact already exists then edit, otherwise create
-    contact = Contact.find_by_email(params[:contact][:email])
-    if contact.nil?
-      contact = Contact.new(params[:contact])
-      v = contact.save
+  def add_string(str, key)
+    if str != ""
+      str += ",#{key}"
     else
-      v = contact.update_attributes(params[:contact])
+      str += key
     end
-
-    if !v
-      redirect_to root_path,
-                  :alert => "Error creating contact record: <br/>
-                              FName: #{contact.fname}<br/>
-                              LName: #{contact.lname}<br/>
-                              Email: #{contact.email}".html_safe
-      return
-    end
-
-    x = register_with_gibbon contact, list_name
-    if x == true
-      redirect_to root_path, :notice => "Thank you for registering!.  You'll recieve a confirmation email soon."
-    else
-      redirect_to root_path, :alert => "Error creating contact record. #{x.inspect}"
-    end
-
+    str
   end
-
-
-  def register_with_gibbon contact, list_name
-  lists = Gibbon.lists({:filters => {:list_name => list_name}})
-  list = lists["data"][0]
-
-  # add contact to system
-  x = Gibbon.list_subscribe({:id => list["id"],
-                             :email_address => contact.email,
-                             :update_existing => true,
-                             :double_optin => true,
-                             :send_welcome => true,
-                             :merge_vars => {'FNAME' => "#{contact.fname}",'LNAME' => "#{contact.lname}", 'Group' => list_name,
-                                             'eZine' => 'yes', 'Notify' => 'yes'
-                             }})
-  end
-
 end

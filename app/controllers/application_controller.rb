@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
     !current_user.nil? && (current_user.has_role? :admin)
   end
 
+  def report_name
+    '5 Secrets to a Healthier Sexier Body'
+  end
+
 end
