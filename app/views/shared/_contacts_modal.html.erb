@@ -13,16 +13,19 @@
             <%= text_field(:contact, :lname, :placeholder => "Last Name", :class => "contact_lname_field", 'ng-model' => 'lname') %>
             <br/>
             <%= email_field(:contact, :email, :placeholder => "Email Address", :class => "email_contact_form_field", 'ng-model' => 'email') %>
+            <br/>
+            All subscriptions will receive my Free Report:<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= HealthyHabits::REPORT_NAME.html_safe %><br/>
 
             <h4>I'm interested in:</h4>
 
             <table class='interest_list'>
               <tr>
                 <td>
-                  <%= check_box(:contact, :report_list, 'ng-model' => 'report_list') %>
+                  <%= check_box_tag(:contact, :ezine_list, 'ng-model' => 'ezine_list') %>
 
                 <td>
-                  Free Report: <i>5 Secrets to a Healthier Happier Body</i>, eZine <i>Thrive</i>
+                  eZine <i>Thrive</i>
                   <br/> <br/>
                 </td>
               </tr>
@@ -83,7 +86,8 @@
       </table>
     </div>
     <div class="modal-footer">
-      <%= submit_tag ' OK ', class: "btn btn-small btn-success contact_btn", 'ng-click' => "enterContact()" %>
+      <%= link_to "OK", '#', 'ng-click' => 'enterContact()', class: 'btn btn-small btn-success' %>
+      <%= link_to "Cancel", '#', 'data-dismiss'=>'modal', class: 'btn btn-small btn-warning' %>
     </div>
   </div>
 </div>
