@@ -3,9 +3,9 @@ angular.module "HHabits", ["ngResource", "ng-rails-csrf"]
 @ContactCtrl = ($scope, $resource) ->
   Contact = $resource("/contacts/:id", {id: "@id"}, {update: {method: "PUT"}})
   $scope.contacts = Contact.query()
-  $scope.fname = 'a'
-  $scope.lname = 'a'
-  $scope.email = 'aamax@xmission.com'
+  $scope.fname = ''
+  $scope.lname = ''
+  $scope.email = ''
   $scope.ezine_list = true
   $scope.microscopy_list = true
   $scope.cleanse_list = true
